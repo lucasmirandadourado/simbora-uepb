@@ -1,5 +1,9 @@
 package com.teste;
 
+import com.model.Carona;
+import com.model.Motorista;
+import com.model.Trajetoria;
+
 import junit.framework.TestCase;
 
 public class Teste extends TestCase {
