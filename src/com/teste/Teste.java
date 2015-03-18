@@ -17,6 +17,7 @@ public class Teste extends TestCase {
 		
 			carona.criarCarona(motorista, trajetoria);
 		
+			
 		
 	}
 	
