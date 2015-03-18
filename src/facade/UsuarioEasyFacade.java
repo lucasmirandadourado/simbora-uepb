@@ -23,7 +23,7 @@ public class UsuarioEasyFacade {
 		usuario.setNome(nome);
 		usuario.setEndereco(endereco);
 		usuario.setEmail(email);
-		if(ehUsuarioValido(usuario)){
+		if(ehUsuarioValido(usuario) && ehUsuarioNovo(usuario)){
 			usuarios.add(usuario);
 		}
 		else{
@@ -32,16 +32,30 @@ public class UsuarioEasyFacade {
 		
 	}
 	
+	private boolean ehUsuarioNovo(Usuario user) {
+		for(Usuario usuario : usuarios){
+			if(usuario.getLogin().equals(user.getLogin())){
+				mensagemErro="Já existe um usuário com este login";
+				return false;
+			}
+			if(usuario.getEmail().equals(user.getEmail())){
+				mensagemErro="Já existe um usuário com este email";
+				return false;
+			}
+		}
+		return true;
+	}
+
 	private boolean ehUsuarioValido(Usuario usuario) {
-		if(usuario.getLogin().isEmpty()){
+		if(usuario.getLogin()==null || usuario.getLogin().isEmpty()){
 			mensagemErro = "Login inválido";
 			return false;
 		}
-		if(usuario.getNome().isEmpty()){
+		if(usuario.getNome()==null || usuario.getNome().isEmpty()){
 			mensagemErro = "Nome inválido";
 			return false;
 		}
-		if(usuario.getEmail().isEmpty()){
+		if(usuario.getEmail()==null || usuario.getEmail().isEmpty()){
 			mensagemErro = "Email inválido";
 			return false;
 		}
@@ -49,14 +63,17 @@ public class UsuarioEasyFacade {
 	}
 
 	public int abrirSessao(String login, String senha){
-		
+		mensagemErro = "Usuário inexistente";
 		for(Usuario usuario : usuarios){
 			if(usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)){
-				return usuarios.indexOf(usuario);
+				return usuarios.indexOf(usuario);	
+			}
+			else if(usuario.getLogin().equals(login) || usuario.getSenha().equals(senha)){
+				mensagemErro = "Login inválido";
 			}
 		}
 	
-		throw new UsuarioException("Login inválido");
+		throw new UsuarioException(mensagemErro);
 	}
 
 	public String getAtributoUsuario(String login, String atributo){
