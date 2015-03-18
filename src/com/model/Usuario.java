@@ -2,7 +2,10 @@ package com.model;
 
 /**
  * Usuário básico. Ele tem como funções: 
- * <br> Logar ao sistema
+ * <li>logar ao sistema</li>
+ * <li>buscar carona</li>
+ * <li>solicitar carona</li>
+ * <li>sugerir local da carona</li>
  * 
  * @author Lucas Miranda
  * @author Bruno José Clementino
