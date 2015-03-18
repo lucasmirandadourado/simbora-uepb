@@ -63,20 +63,36 @@ public class UsuarioEasyFacade {
 	}
 
 	public int abrirSessao(String login, String senha){
-		mensagemErro = "Usuário inexistente";
+		//mensagemErro = "Usuário inexistente";
 		for(Usuario usuario : usuarios){
-			if(usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)){
-				return usuarios.indexOf(usuario);	
-			}
-			else if(usuario.getLogin().equals(login) || usuario.getSenha().equals(senha)){
-				mensagemErro = "Login inválido";
-			}
+				if( usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)){
+					return usuarios.indexOf(usuario);	
+				}
+				else if(login==null || login.isEmpty() || usuario.getLogin().equals(login) || usuario.getSenha().equals(senha)){
+					//mensagemErro = "Login inválido";
+					throw new UsuarioException("Login inválido");
+				}
 		}
 	
-		throw new UsuarioException(mensagemErro);
+		throw new UsuarioException("Usuário inexistente");
 	}
 
 	public String getAtributoUsuario(String login, String atributo){
+		
+		
+		if(login==null || login.isEmpty()){
+			throw new UsuarioException("Login inválido");
+		}
+		if(atributo==null || atributo.isEmpty()){
+			throw new UsuarioException("Atributo inválido");
+		}
+		if(!ehLoginExistente(login)){
+			throw new UsuarioException("Usuário inexistente");
+		}
+		if(!ehAtributoExistente(atributo)){
+			throw new UsuarioException("Atributo inexistente");
+		}
+		
 		for(Usuario usuario : usuarios){
 			if(usuario.getLogin().equals(login)){
 				switch(atributo){
@@ -93,6 +109,21 @@ public class UsuarioEasyFacade {
 		return "";
 	}
 	
+	private boolean ehAtributoExistente(String atributo) {
+		if(atributo.equals("nome") || atributo.equals("endereco") || atributo.equals("email")){
+			return true;
+		}
+		return false;
+	}
+
+	private boolean ehLoginExistente(String login) {
+		for(Usuario usuario : usuarios){
+			if( usuario.getLogin().equals(login))
+				return true;
+	}
+		return false;
+	}
+
 	public void encerrarSistema(){
 		
 	}
