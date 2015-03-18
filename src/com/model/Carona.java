@@ -1,5 +1,12 @@
 package com.model;
 
+/**
+ * 
+ * 
+ * @author Lucas Miranda
+ * @author Bruno José Clementino
+ *
+ */
 public class Carona {
 
 	private String localDeOrigem;
