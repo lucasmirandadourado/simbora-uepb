@@ -19,6 +19,13 @@ public class Usuario {
 	private String endereco;
 	private String email;
 
+	/** 
+	 * Método contrutor Default.
+	 */
+	public Usuario() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public String getLogin() {
 		return login;
 	}

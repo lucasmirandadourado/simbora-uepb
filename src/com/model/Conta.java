@@ -1,5 +1,11 @@
 package com.model;
 
+/**
+ * 
+ * @author Lucas Miranda
+ * @author Bruno Clentino
+ *
+ */
 public class Conta {
 	
 	private String login;
@@ -7,6 +13,7 @@ public class Conta {
 	private String nome;
 	private String endereco;
 	private String email;
+	
 	public String getLogin() {
 		return login;
 	}
