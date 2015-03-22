@@ -5,7 +5,7 @@ package com.model;
  * O motorista que também pode ser considerado um {@link Caroneiro}. Mas a
  * diferença é que ele têm um Veículo. Para o cadastro do motorista o
  * {@link Caroneiro} deverá cadastrar o veículo, automaticamente o sistema
- * deverá reconhece-lo como um usuário.</br>
+ * deverá reconhece-lo como um usuário.
  * 
  * @author Bruno Clementino e Lucas Miranda
  *

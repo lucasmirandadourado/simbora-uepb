@@ -11,6 +11,7 @@ package com.model;
  * @author Bruno José Clementino
  *
  */
+
 public class Usuario {
 
 	private String login;
