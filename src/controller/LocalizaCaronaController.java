@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.model.Carona;
-import com.model.Usuario;
 import com.model.Veiculo;
+
+import facade.UsuarioFacade;
 
 /**
  * Localizar carona. Permitir o cadastro de caronas no perfil do usuário.
@@ -17,27 +18,25 @@ import com.model.Veiculo;
  */
 public class LocalizaCaronaController {
 
-	Usuario usuario;
 	Veiculo veiculo;
 	String mensagemErro = "";
 	List<Carona> carona = new ArrayList<Carona>();
-
-	private void zeraSistema() {
-		carona.clear();	
+	UsuarioFacade usuarioFacade;
+	int sessao;
+	
+	private void criarUsuario(String login, String senha, String nome, String endereco, String email) {
+		usuarioFacade = new UsuarioFacade(login, senha, nome, endereco, email);
 	}
 	
-	private void criarUsuario() {
-		
+	private void iniciarSessao(String login, String senha) {
+		usuarioFacade.abrirSessao(login, senha);
 	}
 	
-	private void iniciarSessao() {
-		// TODO Auto-generated method stub
-
-	}
-	
-	private void localizarCarona() {
-		// TODO Auto-generated method stub
-
+	private boolean localizarCarona(int sessao) {
+		for (Carona carona: carona) {
+			
+		}		
+		return false;
 	}
 	
 	private void cadastrarCarona() {

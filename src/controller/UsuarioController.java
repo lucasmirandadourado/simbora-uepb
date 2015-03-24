@@ -18,11 +18,11 @@ public class UsuarioController {
 
 	public void criarUsuario(String login, String senha, String nome, String endereco, String email) throws UsuarioException{
 		usuario = new Usuario();
-		usuario.setLogin(login);
-		usuario.setSenha(senha);
-		usuario.setNome(nome);
-		usuario.setEndereco(endereco);
-		usuario.setEmail(email);
+			usuario.setLogin(login);
+			usuario.setSenha(senha);
+			usuario.setNome(nome);
+			usuario.setEndereco(endereco);
+			usuario.setEmail(email);
 		if(ehUsuarioValido(usuario) && ehUsuarioNovo(usuario)){
 			usuarios.add(usuario);
 		}

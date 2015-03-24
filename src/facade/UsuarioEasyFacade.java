@@ -1,10 +1,6 @@
 package facade;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.excessoes.UsuarioException;
-import com.model.Usuario;
 
 import controller.UsuarioController;
 
