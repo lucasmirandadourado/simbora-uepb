@@ -26,7 +26,7 @@ expect "Campina Grande - João Pessoa" getTrajeto idCarona=${carona1ID}
 
 carona2ID=cadastrarCarona idSessao=${sessaoMark} origem="Rio de Janeiro" destino="São Paulo" data="31/05/2013" hora="08:00" vagas=2
 expect "31/05/2013" getAtributoCarona idCarona=${carona2ID} atributo="data"
-expect 2 getAtributoCarona idCarona=${carona2ID} atributo="vagas"
+expect "2" getAtributoCarona idCarona=${carona2ID} atributo="vagas"
 
 carona3ID=cadastrarCarona idSessao=${sessaoMark} origem="João Pessoa" destino="Campina Grande" data="25/11/2026" hora="06:59" vagas=4
 expect "João Pessoa para Campina Grande, no dia 25/11/2026, as 06:59" getCarona idCarona=${carona3ID}
