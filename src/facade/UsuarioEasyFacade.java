@@ -10,7 +10,7 @@ public class UsuarioEasyFacade {
 	
 	Usuario usuario;
 	String mensagemErro = "";
-	List<Usuario> usuarios = new ArrayList<>();
+	List<Usuario> usuarios = new ArrayList<>(); 
 	
 	public void zerarSistema(){
 		
@@ -21,11 +21,12 @@ public class UsuarioEasyFacade {
 		usuarioController.criarUsuario(login, senha, nome, endereco, email);
 =======
 		usuario = new Usuario();
-		usuario.setLogin(login);
-		usuario.setSenha(senha);
-		usuario.setNome(nome);
-		usuario.setEndereco(endereco);
-		usuario.setEmail(email);
+			usuario.setLogin(login);
+			usuario.setSenha(senha);
+			usuario.setNome(nome);
+			usuario.setEndereco(endereco);
+			usuario.setEmail(email);
+			
 		if(ehUsuarioValido(usuario) && ehUsuarioNovo(usuario)){
 			usuarios.add(usuario);
 		}
