@@ -18,9 +18,7 @@ public class Veiculo {
 	/**
 	 * Metodo construtor padrão.
 	 */
-	public Veiculo() {
-
-	}
+	public Veiculo() {}
 
 	/**
 	 * Metodo construtor.
@@ -38,7 +36,7 @@ public class Veiculo {
 	public String getModeloVeiculo() {
 		return modeloVeiculo;
 	}
-
+ 
 	public void setModeloVeiculo(String modeloVeiculo) {
 		this.modeloVeiculo = modeloVeiculo;
 	}

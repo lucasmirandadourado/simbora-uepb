@@ -3,6 +3,8 @@
  */
 package facade;
 
+import com.excessoes.UsuarioException;
+
 /**
  * Classe que faz a interface com as Classes do model.
  * @author Lucas Miranda e Bruno Clementino
@@ -11,7 +13,7 @@ package facade;
 public class UsuarioFacade {
 	
 	private String login, senha, nome, endereco, email;
-	private UsuarioEasyFacade usuario = null;
+	private UsuarioEasyFacade usuario = null; 
 	
 	public UsuarioFacade(String login, String senha, String nome, String endereco, String email) {
 		this.login = login;
@@ -22,15 +24,15 @@ public class UsuarioFacade {
 		this.usuario = new UsuarioEasyFacade();
 	}
 	
-	public void criarUsuario(String login, String senha, String nome, String endereco, String email) {
+	public void criarUsuario(String login, String senha, String nome, String endereco, String email) throws UsuarioException {
 		usuario.criarUsuario(login, senha, nome, endereco, email);
 	}
 	
-	public void abrirSessao (String login, String senha) {
+	public void abrirSessao (String login, String senha) throws UsuarioException {
 		usuario.abrirSessao(login, senha);
 	}
 	
-	public void getAtributoUsuario (String login, String atributo ) {
+	public void getAtributoUsuario (String login, String atributo ) throws UsuarioException {
 		usuario.getAtributoUsuario(login, atributo);
 	}
 	

@@ -16,11 +16,11 @@ public class UsuarioEasyFacade {
 		
 	}
 
-	public void criarUsuario(String login, String senha, String nome, String endereco, String email){
+	public void criarUsuario(String login, String senha, String nome, String endereco, String email) throws UsuarioException{
 		usuario = new Usuario();
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
-		usuario.setNome(nome);
+		usuario.setNome(nome); 
 		usuario.setEndereco(endereco);
 		usuario.setEmail(email);
 		if(ehUsuarioValido(usuario) && ehUsuarioNovo(usuario)){
@@ -62,7 +62,7 @@ public class UsuarioEasyFacade {
 		return true;
 	}
 
-	public int abrirSessao(String login, String senha){
+	public int abrirSessao(String login, String senha) throws UsuarioException{
 		//mensagemErro = "Usuário inexistente";
 		for(Usuario usuario : usuarios){
 				if( usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)){
@@ -77,7 +77,7 @@ public class UsuarioEasyFacade {
 		throw new UsuarioException("Usuário inexistente");
 	}
 
-	public String getAtributoUsuario(String login, String atributo){
+	public String getAtributoUsuario(String login, String atributo) throws UsuarioException {
 		
 		
 		if(login==null || login.isEmpty()){
