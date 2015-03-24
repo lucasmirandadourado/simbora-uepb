@@ -21,7 +21,7 @@ public class UsuarioFacade {
 		this.nome = nome;
 		this.endereco = endereco;
 		this.email = email;
-		this.usuario = new UsuarioEasyFacade();
+		this.usuario = new UsuarioEasyFacade(); 
 	}
 	
 	public void criarUsuario(String login, String senha, String nome, String endereco, String email) throws UsuarioException {
