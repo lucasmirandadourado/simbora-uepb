@@ -15,7 +15,7 @@ public class UsuarioFacade {
 	
 	public UsuarioFacade(String login, String senha, String nome, String endereco, String email) {
 		this.login = login;
-		this.senha = senha;
+		this.setSenha(senha);
 		this.nome = nome;
 		this.endereco = endereco;
 		this.email = email;
@@ -36,5 +36,53 @@ public class UsuarioFacade {
 	
 	public void encerrarSistema () {
 		usuario.encerrarSistema();
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public UsuarioEasyFacade getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioEasyFacade usuario) {
+		this.usuario = usuario;
 	}
 }

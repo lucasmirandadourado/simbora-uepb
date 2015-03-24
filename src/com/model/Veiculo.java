@@ -4,8 +4,9 @@ package com.model;
  * O sistema permite que seja cadastrado qualquer tipo de {@link Veiculo}.
  * Simbora não garante a segurança dos caroneiros, isso fica por conta do
  * motorista e passageiro. <br>
- * O Veiculo deverá ter: modelo, cor do carro, placa, cidade e dono do carro. Essas
- * informações deveram ser utilizada para dar maior confiança aos coroeiros.
+ * O Veiculo deverá ter: modelo, cor do carro, placa, cidade e dono do carro.
+ * Essas informações deveram ser utilizada para dar maior confiança aos
+ * coroeiros.
  *
  * @author Lucas Miranda
  *
@@ -15,12 +16,12 @@ public class Veiculo {
 	String modeloVeiculo, cor, placa, dono, cidade;
 
 	/**
-	 * Metodo construtor default
+	 * Metodo construtor padrão.
 	 */
 	public Veiculo() {
-		
+
 	}
-	
+
 	/**
 	 * Metodo construtor.
 	 * 
@@ -33,6 +34,7 @@ public class Veiculo {
 		this.placa = placa;
 		this.cidade = cidade;
 	}
+
 	public String getModeloVeiculo() {
 		return modeloVeiculo;
 	}
