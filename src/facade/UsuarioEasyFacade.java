@@ -6,16 +6,17 @@ import java.util.List;
 import com.excessoes.UsuarioException;
 import com.model.Usuario;
 
+import controller.UsuarioController;
+
 public class UsuarioEasyFacade {
 	
-	Usuario usuario;
-	String mensagemErro = "";
-	List<Usuario> usuarios = new ArrayList<>();
+	UsuarioController usuarioController = new UsuarioController();
 	
 	public void zerarSistema(){
 		
 	}
 
+<<<<<<< HEAD
 	public void criarUsuario(String login, String senha, String nome, String endereco, String email) throws UsuarioException{
 		usuario = new Usuario();
 		usuario.setLogin(login);
@@ -29,39 +30,14 @@ public class UsuarioEasyFacade {
 		else{
 			throw new UsuarioException(mensagemErro);
 		}
+=======
+	public void criarUsuario(String login, String senha, String nome, String endereco, String email){
+		usuarioController.criarUsuario(login, senha, nome, endereco, email);
+>>>>>>> origin/master
 		
 	}
-	
-	private boolean ehUsuarioNovo(Usuario user) {
-		for(Usuario usuario : usuarios){
-			if(usuario.getLogin().equals(user.getLogin())){
-				mensagemErro="Já existe um usuário com este login";
-				return false;
-			}
-			if(usuario.getEmail().equals(user.getEmail())){
-				mensagemErro="Já existe um usuário com este email";
-				return false;
-			}
-		}
-		return true;
-	}
 
-	private boolean ehUsuarioValido(Usuario usuario) {
-		if(usuario.getLogin()==null || usuario.getLogin().isEmpty()){
-			mensagemErro = "Login inválido";
-			return false;
-		}
-		if(usuario.getNome()==null || usuario.getNome().isEmpty()){
-			mensagemErro = "Nome inválido";
-			return false;
-		}
-		if(usuario.getEmail()==null || usuario.getEmail().isEmpty()){
-			mensagemErro = "Email inválido";
-			return false;
-		}
-		return true;
-	}
-
+<<<<<<< HEAD
 	public int abrirSessao(String login, String senha) throws UsuarioException{
 		//mensagemErro = "Usuário inexistente";
 		for(Usuario usuario : usuarios){
@@ -75,53 +51,16 @@ public class UsuarioEasyFacade {
 		}
 	
 		throw new UsuarioException("Usuário inexistente");
+=======
+	public int abrirSessao(String login, String senha){
+		return usuarioController.abrirSessao(login, senha);
+>>>>>>> origin/master
 	}
 
 	public String getAtributoUsuario(String login, String atributo) throws UsuarioException {
 		
 		
-		if(login==null || login.isEmpty()){
-			throw new UsuarioException("Login inválido");
-		}
-		if(atributo==null || atributo.isEmpty()){
-			throw new UsuarioException("Atributo inválido");
-		}
-		if(!ehLoginExistente(login)){
-			throw new UsuarioException("Usuário inexistente");
-		}
-		if(!ehAtributoExistente(atributo)){
-			throw new UsuarioException("Atributo inexistente");
-		}
-		
-		for(Usuario usuario : usuarios){
-			if(usuario.getLogin().equals(login)){
-				switch(atributo){
-				case "endereco":
-					return usuario.getEndereco();
-				case "nome":
-					return usuario.getNome();
-				case "email":
-					return usuario.getEmail();
-				}
-				return usuario.getNome();
-			}
-		}
-		return "";
-	}
-	
-	private boolean ehAtributoExistente(String atributo) {
-		if(atributo.equals("nome") || atributo.equals("endereco") || atributo.equals("email")){
-			return true;
-		}
-		return false;
-	}
-
-	private boolean ehLoginExistente(String login) {
-		for(Usuario usuario : usuarios){
-			if( usuario.getLogin().equals(login))
-				return true;
-	}
-		return false;
+		return usuarioController.getAtributoUsuario(login, atributo);
 	}
 
 	public void encerrarSistema(){
