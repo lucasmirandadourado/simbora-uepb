@@ -11,26 +11,17 @@ public class LocalizaCaronaController {
 	UsuarioController usuarios = new UsuarioController();
 	int sessao;
 	
-	private void criarUsuario() {
-		usuarios = new UsuarioController();
-	}
-	
-	private int abrirSessao(String login, String senha) {
-		sessao = usuarios.abrirSessao(login, senha);
-		return sessao;
-	}
-	
-	private String localizarCarona(String origem, String destino) {
+	public List<Carona> localizarCarona(int sessao, String origem, String destino) {
+		List<Carona> listaCaronas = new ArrayList<Carona>();
 		for (Carona carona: caronas) {
 			if(carona.getLocalDeOrigem().equals(origem) && carona.getLocalDeDestino().equals(destino)){
-				return carona.getLocalDeOrigem() + " " + carona.getLocalDeDestino() + " " + carona.getData() 
-						+ " " + carona.getHorarioDeSaida() + " " + carona.getQtdDeVagas();
+				listaCaronas.add(carona);
 			}
 		}		
-		return null;
+		return listaCaronas;
 	}
 	
-	private void cadastrarCarona(String origem, String destino, String data, String hora, int vagas) {
+	public void cadastrarCarona(String origem, String destino, String data, String hora, int vagas) {
 		Carona carona = new Carona();
 			carona.setLocalDeOrigem(origem);
 			carona.setLocalDeDestino(destino);
@@ -41,6 +32,4 @@ public class LocalizaCaronaController {
 		
 	}
 
-	
-	
 }

@@ -1,12 +1,19 @@
 package easyaccept;
 
-import com.excessoes.UsuarioException;
+import java.util.List;
 
+import com.excessoes.UsuarioException;
+import com.model.Carona;
+
+import controller.LocalizaCaronaController;
 import controller.UsuarioController;
 
 public class SimboraEasyAccept {
 
 	UsuarioController usuarioController = new UsuarioController();
+	// Vou mexer
+	LocalizaCaronaController localizarCarona = new LocalizaCaronaController();
+	///
 	
 	public void zerarSistema(){
 		usuarioController.zerarSistema();
@@ -27,4 +34,13 @@ public class SimboraEasyAccept {
 	public void encerrarSistema(){
 		usuarioController.encerrarSistema();
 	}
+	
+	// Metodos US03
+	public List<Carona> localizaCarona(int sesao, String origem, String destino) {
+		return localizarCarona.localizarCarona(sesao, origem, destino);
+	}
+	
+	public void cadastrarCarona(String origem, String destino, String data, String hora, int vagas) {
+		localizarCarona.cadastrarCarona(origem, destino, data, hora, vagas);
+	}	
 }
