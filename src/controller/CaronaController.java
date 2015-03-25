@@ -1,6 +1,8 @@
 package controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.excessoes.CaronaException;
@@ -11,7 +13,10 @@ public class CaronaController {
 	List<Carona> caronas = new ArrayList<>();
 	Carona carona;
 
-	public String localizarCarona(int idSessao, String origem , String destino) throws Exception{
+	public String localizarCarona(String idSessao, String origem , String destino) throws Exception{
+		if (idSessao==null) {
+			throw new CaronaException("Sessão inválida");
+		}
 		
 		if(!origem.isEmpty() && !destino.isEmpty()){
 			return origemDestinoCarona(origem, destino);
@@ -95,10 +100,26 @@ public class CaronaController {
 		return ids+"}";
 	}
 	
-	public int cadastrarCarona(Integer idSessao, String origem, String destino, String data, String hora, int qtdDeVagas) throws CaronaException {
-//		if (idSessao.equals(null)) {
-//			throw new CaronaException("Sessão inválida");
-//		}
+	public String cadastrarCarona(String idSessao, String origem, String destino, String data, String hora, int qtdDeVagas) throws CaronaException {
+		if (idSessao==null || idSessao.isEmpty()) {
+			throw new CaronaException("Sessão inválida");
+		}
+		if(!isNumero(idSessao)){
+			throw new CaronaException("Sessão inexistente");
+		}
+		if(origem==null || origem.isEmpty()){
+			throw new CaronaException("Origem inválida");
+		}
+		if(destino==null || destino.isEmpty()){
+			throw new CaronaException("Destino inválido");
+		}
+		if(data==null || data.isEmpty()){
+			throw new CaronaException("Data inválida");
+		}
+		if(!isData(data)){
+			throw new CaronaException("Data inválida");
+		}
+		
 		carona = new Carona();
 			carona.setLocalDeOrigem(origem);
 			carona.setLocalDeDestino(destino);
@@ -107,7 +128,29 @@ public class CaronaController {
 			carona.setQtdDeVagas(qtdDeVagas);
 		caronas.add(carona);
 		carona.setIdCarona(caronas.indexOf(carona));
-		return carona.getIdCarona();
+		return carona.getIdCarona()+"";
+		
+	}
+	
+	private boolean isData(String data) {
+		try {
+			SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+			formatoData.setLenient(false);
+			Date dataFormatada = formatoData.parse(data);
+			return true;
+			
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	private boolean isNumero(String idSessao){
+		try {
+			int id = Integer.parseInt(idSessao);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 		
 	}
 	

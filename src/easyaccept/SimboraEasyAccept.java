@@ -28,7 +28,7 @@ public class SimboraEasyAccept {
 		usuarioController.criarUsuario(login, senha, nome, endereco, email);
 	}
 	
-	public int abrirSessao(String login, String senha) throws UsuarioException{
+	public String abrirSessao(String login, String senha) throws UsuarioException{
 		return usuarioController.abrirSessao(login, senha);
 	}
 
@@ -43,11 +43,11 @@ public class SimboraEasyAccept {
 	
 	//Metodos US02
 	
-	public String localizarCarona(int idSessao, String origem, String destino) throws Exception {
+	public String localizarCarona(String idSessao, String origem, String destino) throws Exception {
 		return caronaController.localizarCarona(idSessao, origem, destino);
 	}
 	
-	public int cadastrarCarona(Integer idSessao, String origem, String destino, String data, String hora, int qtdDeVagas) throws CaronaException {
+	public String cadastrarCarona(String idSessao, String origem, String destino, String data, String hora, int qtdDeVagas) throws CaronaException {
 		return caronaController.cadastrarCarona(idSessao, origem, destino, data, hora, qtdDeVagas);
 	}
 	

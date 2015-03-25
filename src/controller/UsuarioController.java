@@ -62,11 +62,11 @@ public class UsuarioController {
 		return true;
 	}
 
-	public int abrirSessao(String login, String senha) throws UsuarioException{
+	public String abrirSessao(String login, String senha) throws UsuarioException{
 		//mensagemErro = "Usuário inexistente";
 		for(Usuario usuario : usuarios){
 				if( usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)){
-					return usuarios.indexOf(usuario);	
+					return usuarios.indexOf(usuario)+"";	
 				}
 				else if(login==null || login.isEmpty() || usuario.getLogin().equals(login) || usuario.getSenha().equals(senha)){
 					//mensagemErro = "Login inválido";

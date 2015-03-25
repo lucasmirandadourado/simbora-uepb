@@ -18,7 +18,7 @@ public class SimboraFacade {
 		simboraEasyAccept.criarUsuario(login, senha, nome, endereco, email);
 	}
 	
-	public int abrirSessao(String login, String senha) throws UsuarioException{
+	public String abrirSessao(String login, String senha) throws UsuarioException{
 		return simboraEasyAccept.abrirSessao(login, senha);
 	}
 
@@ -30,14 +30,11 @@ public class SimboraFacade {
 		simboraEasyAccept.encerrarSistema();
 	}
 		
-	public String localizarCarona(int idSessao, String origem , String destino) throws Exception{
+	public String localizarCarona(String idSessao, String origem , String destino) throws Exception{
 		return simboraEasyAccept.localizarCarona(idSessao, origem, destino);
 	} 
 	
-	public int cadastrarCarona(Integer idSessao, String origem, String destino, String data, String hora, int qtdDeVagas) throws CaronaException{
-		if (idSessao.equals(null)) {
-			throw new CaronaException("Sessão inválida");
-		}
+	public String cadastrarCarona(String idSessao, String origem, String destino, String data, String hora, int qtdDeVagas) throws CaronaException{
 		return simboraEasyAccept.cadastrarCarona(idSessao, origem, destino, data, hora, qtdDeVagas);
 	}
 	
@@ -55,7 +52,7 @@ public class SimboraFacade {
 	
 
 	public static void main(String[] args) {
-		args = new String[] {"facade.SimboraFacade", "scripts/us01.txt", "scripts/us02.txt", "scripts/us03.txt"};
+		args = new String[] {"facade.SimboraFacade", "scripts/us01.txt", "scripts/us02.txt"};
 		EasyAccept.main(args); 
 	}
 }
