@@ -2,13 +2,11 @@ package easyaccept;
 
 import com.excessoes.UsuarioException;
 
-import controller.CaronaController;
 import controller.UsuarioController;
 
 public class SimboraEasyAccept {
 
 	UsuarioController usuarioController = new UsuarioController();
-	CaronaController caronaController = new CaronaController();
 	
 	public void zerarSistema(){
 		usuarioController.zerarSistema();
@@ -29,32 +27,4 @@ public class SimboraEasyAccept {
 	public void encerrarSistema(){
 		usuarioController.encerrarSistema();
 	}
-	
-	
-	public String localizarCarona(int idSessao, String origem, String destino) throws Exception {
-		return caronaController.localizarCarona(idSessao, origem, destino);
-	}
-	
-	public int cadastrarCarona(int idSessao, String origem, String destino, String data, String hora, int qtdDeVagas){
-		return caronaController.cadastrarCarona(idSessao, origem, destino, data, hora, qtdDeVagas);
-	}
-	
-	public String getAtributoCarona(int idCarona, String atributo){
-		return caronaController.getAtributoCarona(idCarona, atributo);
-	}
-	
-	public String getTrajeto(int idCarona){
-		return caronaController.getTrajeto(idCarona);
-	}
-	
-	public String getCarona(int idCarona){
-		return caronaController.getCarona(idCarona);
-	}
 }
-
-
-
-
-
-
-

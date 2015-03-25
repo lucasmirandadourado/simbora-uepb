@@ -1,7 +1,6 @@
 package facade;
 
 import com.excessoes.UsuarioException;
-import com.model.Carona;
 
 import easyaccept.EasyAccept;
 import easyaccept.SimboraEasyAccept;
@@ -30,25 +29,6 @@ public class SimboraFacade {
 		simboraEasyAccept.encerrarSistema();
 	}
 	
-	public String localizarCarona(int idSessao, String origem , String destino) throws Exception{
-		return simboraEasyAccept.localizarCarona(idSessao, origem, destino);
-	} 
-	
-	public int cadastrarCarona(int idSessao, String origem, String destino, String data, String hora, int qtdDeVagas){
-		return simboraEasyAccept.cadastrarCarona(idSessao, origem, destino, data, hora, qtdDeVagas);
-	}
-	
-	public String getAtributoCarona(int idCarona, String atributo){
-		return simboraEasyAccept.getAtributoCarona(idCarona, atributo);
-	}
-	
-	public String getTrajeto(int idCarona){
-		return simboraEasyAccept.getTrajeto(idCarona);
-	}
-	
-	public String getCarona(int idCarona){
-		return simboraEasyAccept.getCarona(idCarona);
-	}
 
 	public static void main(String[] args) {
 		args = new String[] {"facade.SimboraFacade", "scripts/us01.txt", "scripts/us02.txt", "scripts/us03.txt"};
