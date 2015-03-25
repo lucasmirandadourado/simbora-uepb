@@ -5,12 +5,16 @@ import java.util.List;
 import com.excessoes.UsuarioException;
 import com.model.Carona;
 
+import controller.CaronaController;
 import controller.LocalizaCaronaController;
 import controller.UsuarioController;
 
 public class SimboraEasyAccept {
 
 	UsuarioController usuarioController = new UsuarioController();
+	
+	CaronaController caronaController = new CaronaController();
+	
 	// Vou mexer
 	LocalizaCaronaController localizarCarona = new LocalizaCaronaController();
 	///
@@ -34,6 +38,30 @@ public class SimboraEasyAccept {
 	public void encerrarSistema(){
 		usuarioController.encerrarSistema();
 	}
+	
+	
+	//Metodos US02
+	
+	public String localizarCarona(int idSessao, String origem, String destino) throws Exception {
+		return caronaController.localizarCarona(idSessao, origem, destino);
+	}
+	
+	public int cadastrarCarona(int idSessao, String origem, String destino, String data, String hora, int qtdDeVagas){
+		return caronaController.cadastrarCarona(idSessao, origem, destino, data, hora, qtdDeVagas);
+	}
+	
+	public String getAtributoCarona(int idCarona, String atributo){
+		return caronaController.getAtributoCarona(idCarona, atributo);
+	}
+	
+	public String getTrajeto(int idCarona){
+		return caronaController.getTrajeto(idCarona);
+	}
+	
+	public String getCarona(int idCarona){
+		return caronaController.getCarona(idCarona);
+	}
+	
 	
 	// Metodos US03
 	public List<Carona> localizaCarona(int sesao, String origem, String destino) {
