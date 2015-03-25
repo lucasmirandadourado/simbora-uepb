@@ -100,7 +100,7 @@ public class CaronaController {
 		return ids+"}";
 	}
 	
-	public String cadastrarCarona(String idSessao, String origem, String destino, String data, String hora, int qtdDeVagas) throws CaronaException {
+	public String cadastrarCarona(String idSessao, String origem, String destino, String data, String hora, Integer qtdDeVagas) throws CaronaException {
 		if (idSessao==null || idSessao.isEmpty()) {
 			throw new CaronaException("Sessão inválida");
 		}
@@ -125,7 +125,9 @@ public class CaronaController {
 		if(!isHora(hora)){
 			throw new CaronaException("Hora inválida");
 		}
-		
+		if (qtdDeVagas == null) {
+			throw new CaronaException("Vaga inválida");
+		}
 		carona = new Carona();
 			carona.setLocalDeOrigem(origem);
 			carona.setLocalDeDestino(destino);
