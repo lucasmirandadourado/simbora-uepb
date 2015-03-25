@@ -119,6 +119,12 @@ public class CaronaController {
 		if(!isData(data)){
 			throw new CaronaException("Data inválida");
 		}
+		if(hora == null || hora.isEmpty()){
+			throw new CaronaException("Hora inválida");
+		}
+		if(!isHora(hora)){
+			throw new CaronaException("Hora inválida");
+		}
 		
 		carona = new Carona();
 			carona.setLocalDeOrigem(origem);
@@ -144,6 +150,17 @@ public class CaronaController {
 		}
 	}
 
+	private boolean isHora(String data) {
+		try {
+			SimpleDateFormat formatoData = new SimpleDateFormat("HH:mm");
+			formatoData.setLenient(false);
+			Date dataFormatada = formatoData.parse(data);
+			return true;			
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
 	private boolean isNumero(String idSessao){
 		try {
 			int id = Integer.parseInt(idSessao);
