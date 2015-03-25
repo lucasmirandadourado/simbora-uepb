@@ -62,13 +62,4 @@ public class SimboraEasyAccept {
 		return caronaController.getCarona(idCarona);
 	}
 	
-	
-	// Metodos US03
-	public List<Carona> localizaCarona(int sesao, String origem, String destino) {
-		return localizarCarona.localizarCarona(sesao, origem, destino);
-	}
-	
-	public void cadastrarCarona(String origem, String destino, String data, String hora, int vagas) {
-		localizarCarona.cadastrarCarona(origem, destino, data, hora, vagas);
-	}	
 }
