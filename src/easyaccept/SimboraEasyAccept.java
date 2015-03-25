@@ -2,6 +2,7 @@ package easyaccept;
 
 import java.util.List;
 
+import com.excessoes.CaronaException;
 import com.excessoes.UsuarioException;
 import com.model.Carona;
 
@@ -46,7 +47,7 @@ public class SimboraEasyAccept {
 		return caronaController.localizarCarona(idSessao, origem, destino);
 	}
 	
-	public int cadastrarCarona(int idSessao, String origem, String destino, String data, String hora, int qtdDeVagas){
+	public int cadastrarCarona(Integer idSessao, String origem, String destino, String data, String hora, int qtdDeVagas) throws CaronaException {
 		return caronaController.cadastrarCarona(idSessao, origem, destino, data, hora, qtdDeVagas);
 	}
 	

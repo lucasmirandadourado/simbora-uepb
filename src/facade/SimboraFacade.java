@@ -1,5 +1,6 @@
 package facade;
 
+import com.excessoes.CaronaException;
 import com.excessoes.UsuarioException;
 
 import easyaccept.EasyAccept;
@@ -28,14 +29,15 @@ public class SimboraFacade {
 	public void encerrarSistema(){
 		simboraEasyAccept.encerrarSistema();
 	}
-	
-	//************
-	
+		
 	public String localizarCarona(int idSessao, String origem , String destino) throws Exception{
 		return simboraEasyAccept.localizarCarona(idSessao, origem, destino);
 	} 
 	
-	public int cadastrarCarona(int idSessao, String origem, String destino, String data, String hora, int qtdDeVagas){
+	public int cadastrarCarona(Integer idSessao, String origem, String destino, String data, String hora, int qtdDeVagas) throws CaronaException{
+		if (idSessao.equals(null)) {
+			throw new CaronaException("Sessão inválida");
+		}
 		return simboraEasyAccept.cadastrarCarona(idSessao, origem, destino, data, hora, qtdDeVagas);
 	}
 	

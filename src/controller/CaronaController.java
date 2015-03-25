@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.excessoes.CaronaException;
 import com.model.Carona;
 
 public class CaronaController {
@@ -94,17 +95,16 @@ public class CaronaController {
 		return ids+"}";
 	}
 	
-	
-	
-	public int cadastrarCarona(int idSessao, String origem, String destino, String data, String hora, int qtdDeVagas){
+	public int cadastrarCarona(Integer idSessao, String origem, String destino, String data, String hora, int qtdDeVagas) throws CaronaException {
+//		if (idSessao.equals(null)) {
+//			throw new CaronaException("Sessão inválida");
+//		}
 		carona = new Carona();
-		
-		carona.setLocalDeOrigem(origem);
-		carona.setLocalDeDestino(destino);
-		carona.setData(data);
-		carona.setHorarioDeSaida(hora);
-		carona.setQtdDeVagas(qtdDeVagas);
-		
+			carona.setLocalDeOrigem(origem);
+			carona.setLocalDeDestino(destino);
+			carona.setData(data);
+			carona.setHorarioDeSaida(hora);
+			carona.setQtdDeVagas(qtdDeVagas);
 		caronas.add(carona);
 		carona.setIdCarona(caronas.indexOf(carona));
 		return carona.getIdCarona();
