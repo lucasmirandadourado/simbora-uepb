@@ -15,6 +15,8 @@ public class Carona {
 	private String data;
 	private String horarioDeSaida;
 	private int qtdDeVagas;
+	
+	private int idCarona;
 
 	/**
 	 * Método construtor default.
@@ -61,5 +63,13 @@ public class Carona {
 
 	public void setQtdDeVagas(int qtdDeVagas) {
 		this.qtdDeVagas = qtdDeVagas;
+	}
+	
+	public int getIdCarona() {
+		return idCarona;
+	}
+
+	public void setIdCarona(int idCarona) {
+		this.idCarona = idCarona;
 	}
 }
