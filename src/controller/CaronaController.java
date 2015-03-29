@@ -19,29 +19,29 @@ public class CaronaController {
 		if (idSessao == null) {
 			throw new CaronaException("Sessão inválida");
 		}
-		
-		if (origem.equals("-") || origem.equals("()") 
-				|| origem.equals("!") || origem.equals("!?")) {
+
+		if (origem.equals("-") || origem.equals("()") || origem.equals("!")
+				|| origem.equals("!?")) {
 			throw new CaronaException("Origem inválida");
 		}
-		
+
 		if (destino.equals(".") || destino.equals("()") || destino.equals("!?")) {
 			throw new CaronaException("Destino inválido");
 		}
-		
+
 		if (!origem.isEmpty() && !destino.isEmpty()) {
 			return origemDestinoCarona(origem, destino);
 		}
 
-		if (origem.isEmpty() && destino.isEmpty()) {
+		if (origem.isEmpty() && destino.isEmpty()) { 
 			return origemDestinoCarona();
 		}
 
-		if (origem.isEmpty()) {
+		if (origem.isEmpty() && !destino.isEmpty()) {
 			return destinoCarona(destino);
 		}
 
-		if (destino.isEmpty()) {
+		if (!origem.isEmpty() && destino.isEmpty()) {
 			return origemCarona(origem);
 		}
 		return "";
@@ -60,8 +60,11 @@ public class CaronaController {
 				ids += carona.getIdCarona();
 				flag = false;
 			}
+			if (ids.equals("{0") || ids.equals("{0,")) {
+				ids = "{";
+			}
 		}
-
+		  
 		return ids + "}";
 	}
 
@@ -195,26 +198,16 @@ public class CaronaController {
 
 	public String getAtributoCarona(String idCarona, String atributo)
 			throws CaronaException {
-		if (idCarona==null || idCarona.equals("")) {
+		if (idCarona == null || idCarona.equals("")) {
 			throw new CaronaException("Identificador do carona é inválido");
 		}
-//		try {
-//			Integer.valueOf(idCarona);
-//		} catch (NumberFormatException e) {
-//			throw new CaronaException("Item inexistente");
-//		}	
+
 		if (atributo == null) {
 			throw new CaronaException("Atributo inválido");
 		}
 		if (atributo.equals("")) {
 			throw new CaronaException("Atributo inválido");
 		}
-		try {
-			Integer.valueOf(atributo);
-		} catch (Exception e) {
-			throw new CaronaException("Atributo inexistente");
-		}
-		
 		if (atributo.equals("origem")) {
 			return caronas.get(Integer.valueOf(idCarona)).getLocalDeOrigem();
 		}
@@ -227,7 +220,12 @@ public class CaronaController {
 		if (atributo.equals("vagas")) {
 			return caronas.get(Integer.valueOf(idCarona)).getQtdDeVagas() + "";
 		}
-		
+		try {
+			Integer.valueOf(atributo);
+		} catch (Exception e) {
+			throw new CaronaException("Atributo inexistente");
+		}
+
 		return "";
 	}
 
@@ -252,6 +250,7 @@ public class CaronaController {
 		if (idCarona == null || String.valueOf(idCarona) == "") {
 			throw new CaronaException("Carona Inválida");
 		}
+
 		try {
 			Integer.valueOf(idCarona);
 		} catch (Exception e) {
