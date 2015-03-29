@@ -52,23 +52,23 @@ public class CaronaController {
 		String ids = "{";
 		boolean flag = true;// indica se a quantidade de ids é 0
 		for (Carona carona : caronas) {
-			if (carona.getLocalDeOrigem().equals(origem)
-					&& carona.getLocalDeDestino().equals(destino)) {
+			if (carona.getLocalDeOrigem().equals(origem) && carona.getLocalDeDestino().equals(destino)) {
 				if (!flag) {
 					ids += ",";
 				}
 				ids += carona.getIdCarona();
 				flag = false;
 			}
-			if (ids.equals("{0") || ids.equals("{0,")) {
+			if (ids.equals("{0") || ids.equals("{0," )) {
 				ids = "{";
+				flag=true;
 			}
 		}
 		  
 		return ids + "}";
 	}
 
-	private String origemDestinoCarona() {
+	private String origemDestinoCarona() { 
 		String ids = "{";
 		boolean flag = true;// indica se a quantidade de ids é 0 (Serve para
 							// auxiliar na formatação da string de retorno
