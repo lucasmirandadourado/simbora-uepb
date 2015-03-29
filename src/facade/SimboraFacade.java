@@ -34,19 +34,19 @@ public class SimboraFacade {
 		return simboraEasyAccept.localizarCarona(idSessao, origem, destino);
 	} 
 	
-	public String cadastrarCarona(String idSessao, String origem, String destino, String data, String hora, int qtdDeVagas) throws CaronaException{
+	public String cadastrarCarona(String idSessao, String origem, String destino, String data, String hora, String qtdDeVagas) throws CaronaException{
 		return simboraEasyAccept.cadastrarCarona(idSessao, origem, destino, data, hora, qtdDeVagas);
 	}
 	
-	public String getAtributoCarona(int idCarona, String atributo){
+	public String getAtributoCarona(String idCarona, String atributo) throws CaronaException{
 		return simboraEasyAccept.getAtributoCarona(idCarona, atributo);
 	}
 	
-	public String getTrajeto(int idCarona){
+	public String getTrajeto(String idCarona) throws CaronaException{
 		return simboraEasyAccept.getTrajeto(idCarona);
 	}
 	
-	public String getCarona(int idCarona){
+	public String getCarona(String idCarona) throws CaronaException{
 		return simboraEasyAccept.getCarona(idCarona);
 	}
 	

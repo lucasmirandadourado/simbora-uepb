@@ -14,7 +14,7 @@ public class Carona {
 	private String localDeDestino;
 	private String data;
 	private String horarioDeSaida;
-	private int qtdDeVagas;
+	private String qtdDeVagas;
 
 	private int idCarona;
 	/**
@@ -56,11 +56,11 @@ public class Carona {
 		this.horarioDeSaida = horarioDeSaida;
 	}
 
-	public int getQtdDeVagas() {
+	public String getQtdDeVagas() {
 		return qtdDeVagas;
 	}
 
-	public void setQtdDeVagas(int qtdDeVagas) {
+	public void setQtdDeVagas(String qtdDeVagas) {
 		this.qtdDeVagas = qtdDeVagas;
 	}
 

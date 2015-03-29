@@ -1,10 +1,7 @@
 package easyaccept;
 
-import java.util.List;
-
 import com.excessoes.CaronaException;
 import com.excessoes.UsuarioException;
-import com.model.Carona;
 
 import controller.CaronaController;
 import controller.LocalizaCaronaController;
@@ -13,12 +10,9 @@ import controller.UsuarioController;
 public class SimboraEasyAccept {
 
 	UsuarioController usuarioController = new UsuarioController();
-	
 	CaronaController caronaController = new CaronaController();
-	
-	// Vou mexer
 	LocalizaCaronaController localizarCarona = new LocalizaCaronaController();
-	///
+	
 	
 	public void zerarSistema(){
 		usuarioController.zerarSistema();
@@ -47,19 +41,19 @@ public class SimboraEasyAccept {
 		return caronaController.localizarCarona(idSessao, origem, destino);
 	}
 	
-	public String cadastrarCarona(String idSessao, String origem, String destino, String data, String hora, int qtdDeVagas) throws CaronaException {
+	public String cadastrarCarona(String idSessao, String origem, String destino, String data, String hora, String qtdDeVagas) throws CaronaException {
 		return caronaController.cadastrarCarona(idSessao, origem, destino, data, hora, qtdDeVagas);
 	}
 	
-	public String getAtributoCarona(int idCarona, String atributo){
+	public String getAtributoCarona(String idCarona, String atributo) throws CaronaException{
 		return caronaController.getAtributoCarona(idCarona, atributo);
 	}
 	
-	public String getTrajeto(int idCarona){
+	public String getTrajeto(String idCarona) throws CaronaException{
 		return caronaController.getTrajeto(idCarona);
 	}
 	
-	public String getCarona(int idCarona){
+	public String getCarona(String idCarona) throws CaronaException{
 		return caronaController.getCarona(idCarona);
 	}
 	
