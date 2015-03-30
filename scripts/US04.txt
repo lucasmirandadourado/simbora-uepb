@@ -5,7 +5,7 @@
 #          2. Usuário sugerir ponto de encontro
 #          3. Aprovar vaga ou segerir novo lugar. O usuário que cadastrou a carona recebe a solicitação e pode aprová-la ou sugerir um outro ponto de encontro. 
 #             Ao aprová-la a quantidade de vagas disponíveis na carona é atualizada.
-#	   4. Se for sugerido um novo ponto de encontro pelo usuário que cadastrou a carona o solicitante pode aprovar a carona ou recusar.
+#	   	   4. Se for sugerido um novo ponto de encontro pelo usuário que cadastrou a carona o solicitante pode aprovar a carona ou recusar.
 
 
 #Limpar os dados do sistema.

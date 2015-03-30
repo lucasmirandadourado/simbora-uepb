@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.excessoes.UsuarioException;
@@ -127,5 +128,12 @@ public class UsuarioController {
 	public void encerrarSistema(){
 		
 	}
-	
+
+	public void encerrarSessao(String login) {
+		for (Usuario usuario : usuarios) {
+			if (usuario.getLogin().equals(login)) {
+				usuarios.remove(usuario);
+			}
+		}
+	}
 }

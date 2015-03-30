@@ -53,7 +53,7 @@ public class SimboraFacade {
 
 	public static void main(String[] args) {
 		args = new String[] {"facade.SimboraFacade", "scripts/us01.txt",
-				"scripts/us02.txt", "scripts/us03.txt"};
+				"scripts/us02.txt", "scripts/us03.txt", "scripts/us04.txt"};
 		EasyAccept.main(args); 
 	}
 }
