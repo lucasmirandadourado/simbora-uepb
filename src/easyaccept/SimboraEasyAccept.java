@@ -5,6 +5,7 @@ import com.excessoes.UsuarioException;
 
 import controller.CaronaController;
 import controller.LocalizaCaronaController;
+import controller.PontoDeEncontroController;
 import controller.UsuarioController;
 
 public class SimboraEasyAccept {
@@ -13,9 +14,13 @@ public class SimboraEasyAccept {
 	CaronaController caronaController = new CaronaController();
 	LocalizaCaronaController localizarCarona = new LocalizaCaronaController();
 	
+	PontoDeEncontroController pontoDeEncontroController = new PontoDeEncontroController();
+	
 	
 	public void zerarSistema(){
 		usuarioController.zerarSistema();
+		caronaController.zerarSistema();
+		pontoDeEncontroController.zerarSistema();
 	}
 
 	public void criarUsuario(String login, String senha, String nome, String endereco, String email) throws UsuarioException{
@@ -28,6 +33,10 @@ public class SimboraEasyAccept {
 
 	public String getAtributoUsuario(String login, String atributo) throws UsuarioException{
 		return usuarioController.getAtributoUsuario(login, atributo);
+	}
+	
+	public void encerrarSessao(String login){
+		usuarioController.encerrarSessao(login);
 	}
 	
 	public void encerrarSistema(){
@@ -57,6 +66,11 @@ public class SimboraEasyAccept {
 		return caronaController.getCarona(idCarona);
 	}
 	
+	//Metodos US04
+	
+	public String sugerirPontoEncontro(String idSessao, String idCarona, String pontos){
+		return pontoDeEncontroController.sugerirPontoEncontro(idSessao, idCarona, pontos);
+	}
 	
 	
 }

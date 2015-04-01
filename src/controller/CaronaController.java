@@ -13,6 +13,10 @@ public class CaronaController {
 
 	List<Carona> caronas = new ArrayList<>();
 	Carona carona;
+	
+	public void zerarSistema(){
+		caronas.clear();
+	}
 
 	public String localizarCarona(String idSessao, String origem, String destino)
 			throws Exception {
@@ -158,7 +162,7 @@ public class CaronaController {
 		carona.setHorarioDeSaida(hora);
 		carona.setQtdDeVagas(qtdDeVagas);
 		caronas.add(carona);
-		carona.setIdCarona(caronas.indexOf(carona));
+		carona.setIdCarona( (caronas.indexOf(carona))+"");
 		return carona.getIdCarona() + "";
 
 	}
@@ -208,6 +212,10 @@ public class CaronaController {
 		if (atributo.equals("")) {
 			throw new CaronaException("Atributo inválido");
 		}
+		if(!idCaronaExistir(idCarona)){
+			throw new CaronaException("Item inexistente");
+		}
+		
 		if (atributo.equals("origem")) {
 			return caronas.get(Integer.valueOf(idCarona)).getLocalDeOrigem();
 		}
@@ -220,13 +228,21 @@ public class CaronaController {
 		if (atributo.equals("vagas")) {
 			return caronas.get(Integer.valueOf(idCarona)).getQtdDeVagas() + "";
 		}
-		try {
-			Integer.valueOf(atributo);
-		} catch (Exception e) {
+		//try {
+			//Integer.valueOf(atributo);
+	//	} catch (Exception e) {
 			throw new CaronaException("Atributo inexistente");
-		}
 
-		return "";
+		//return "";
+	}
+
+	private boolean idCaronaExistir(String idCarona) {
+		for(Carona carona : caronas){
+			if((carona.getIdCarona().equals(idCarona))){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public String getTrajeto(String idCarona) throws CaronaException {

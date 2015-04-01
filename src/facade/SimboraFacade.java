@@ -26,6 +26,10 @@ public class SimboraFacade {
 		return simboraEasyAccept.getAtributoUsuario(login, atributo);
 	}
 	
+	public void encerrarSessao(String login){
+		simboraEasyAccept.encerrarSessao(login);
+	}
+	
 	public void encerrarSistema(){
 		simboraEasyAccept.encerrarSistema();
 	}
@@ -48,6 +52,10 @@ public class SimboraFacade {
 	
 	public String getCarona(String idCarona) throws CaronaException{
 		return simboraEasyAccept.getCarona(idCarona);
+	}
+	
+	public String sugerirPontoEncontro(String idSessao, String idCarona, String pontos){
+		return simboraEasyAccept.sugerirPontoEncontro(idSessao, idCarona, pontos);
 	}
 	
 

@@ -16,7 +16,7 @@ public class Carona {
 	private String horarioDeSaida;
 	private String qtdDeVagas;
 
-	private int idCarona;
+	private String idCarona;
 	/**
 	 * Método construtor default.
 	 */
@@ -64,11 +64,11 @@ public class Carona {
 		this.qtdDeVagas = qtdDeVagas;
 	}
 
-	public int getIdCarona() {
+	public String getIdCarona() {
 		return idCarona;
 	}
 
-	public void setIdCarona(int idCarona) {
+	public void setIdCarona(String idCarona) {
 		this.idCarona = idCarona;
 	}
 }

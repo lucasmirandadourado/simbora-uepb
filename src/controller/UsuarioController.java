@@ -133,6 +133,7 @@ public class UsuarioController {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getLogin().equals(login)) {
 				usuarios.remove(usuario);
+				break;
 			}
 		}
 	}
