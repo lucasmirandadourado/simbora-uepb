@@ -1,12 +1,11 @@
 package easyaccept;
 
+import com.controller.CaronaController;
+import com.controller.LocalizaCaronaController;
+import com.controller.PontoDeEncontroController;
+import com.controller.UsuarioController;
 import com.excessoes.CaronaException;
 import com.excessoes.UsuarioException;
-
-import controller.CaronaController;
-import controller.LocalizaCaronaController;
-import controller.PontoDeEncontroController;
-import controller.UsuarioController;
 
 public class SimboraEasyAccept {
 
@@ -17,7 +16,7 @@ public class SimboraEasyAccept {
 	PontoDeEncontroController pontoDeEncontroController = new PontoDeEncontroController();
 	
 	
-	public void zerarSistema(){
+	public void zerarSistema() {
 		usuarioController.zerarSistema();
 		caronaController.zerarSistema();
 		pontoDeEncontroController.zerarSistema();
