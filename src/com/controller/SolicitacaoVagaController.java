@@ -18,7 +18,6 @@ public class SolicitacaoVagaController {
 	 */
 	public void aceitarSolicitacaoPontoEncontro(String idSessao, String idSolicitacao) { 
 		
-		
 	}
 	
 	public String sugerirPontoEncontro(String idSessao, String idCarona, String pontos) {
@@ -28,6 +27,15 @@ public class SolicitacaoVagaController {
 	public String responderSugestaoPontoEncontro(String idSessao,
 			String idCarona, String idSugestao, String pontos) {
 
+		return "";
+	}
+
+	public String solicitarVagaPontoEncontro(String idSessao, String idCarona, String ponto) {
+		
+		return "";
+	}
+	public String getAtributoSolicitacao(String idSolicitacao, String atributo) {
+		
 		return "";
 	}
 

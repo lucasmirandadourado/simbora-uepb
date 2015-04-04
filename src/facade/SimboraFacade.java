@@ -59,6 +59,9 @@ public class SimboraFacade {
 		return simboraEasyAccept.sugerirPontoEncontro(idSessao, idCarona, pontos);
 	}
 	
+	public void aceitarSolicitacaoPontoEncontro(String idSessao, String idSolicitacao) { 
+		simboraEasyAccept.aceitarSolicitacaoPontoEncontro(idSessao, idSolicitacao);		
+	}
 
 	public static void main(String[] args) {
 		args = new String[] {"facade.SimboraFacade", "scripts/us01.txt",

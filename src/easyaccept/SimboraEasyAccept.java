@@ -3,6 +3,7 @@ package easyaccept;
 import com.controller.CaronaController; 
 import com.controller.PontoDeEncontroController;
 import com.controller.SessaoController;
+import com.controller.SolicitacaoVagaController;
 import com.controller.UsuarioController;
 import com.excessoes.CaronaException;
 import com.excessoes.SessaoException;
@@ -18,6 +19,7 @@ public class SimboraEasyAccept {
 	CaronaController caronaController = new CaronaController();
 	SessaoController sessaoController = new SessaoController();
 	PontoDeEncontroController pontoDeEncontroController = new PontoDeEncontroController();
+	SolicitacaoVagaController solicitacao = new SolicitacaoVagaController();
 	
 	public void zerarSistema() {
 		usuarioController.zerarSistema();
@@ -72,6 +74,11 @@ public class SimboraEasyAccept {
 	
 	public String sugerirPontoEncontro(String idSessao, String idCarona, String pontos){
 		return pontoDeEncontroController.sugerirPontoEncontro(idSessao, idCarona, pontos);
+	}
+
+	public void aceitarSolicitacaoPontoEncontro(String idSessao,
+			String idSolicitacao) {
+		solicitacao.aceitarSolicitacaoPontoEncontro(idSessao, idSolicitacao);
 	}
 	
 	

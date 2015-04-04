@@ -16,7 +16,7 @@ import com.model.Sessao;
  */
 public class CaronaController {
 
-	List<Carona> caronas = new ArrayList<>();
+	private static List<Carona> caronas = new ArrayList<Carona>();
 	Carona carona;
 	List<Sessao> sessao = SessaoController.getSessoes();
 
@@ -280,5 +280,28 @@ public class CaronaController {
 				+ ", as " + carona.getHorarioDeSaida();
 	}
 
+	public static List<Carona> getCaronas() {
+		return caronas;
+	}
 
+	public static void setCaronas(List<Carona> caronas) {
+		CaronaController.caronas = caronas;
+	}
+
+	public Carona getCarona() {
+		return carona;
+	}
+
+	public void setCarona(Carona carona) {
+		this.carona = carona;
+	}
+
+	public List<Sessao> getSessao() {
+		return sessao;
+	}
+
+	public void setSessao(List<Sessao> sessao) {
+		this.sessao = sessao;
+	}
+	
 }
