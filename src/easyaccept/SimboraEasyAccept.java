@@ -18,13 +18,13 @@ public class SimboraEasyAccept {
 	UsuarioController usuarioController = new UsuarioController();
 	CaronaController caronaController = new CaronaController();
 	SessaoController sessaoController = new SessaoController();
-	PontoDeEncontroController pontoDeEncontroController = new PontoDeEncontroController();
+	//PontoDeEncontroController pontoDeEncontroController = new PontoDeEncontroController();
 	SolicitacaoVagaController solicitacao = new SolicitacaoVagaController();
 	
 	public void zerarSistema() {
 		usuarioController.zerarSistema();
 		caronaController.zerarSistema();
-		pontoDeEncontroController.zerarSistema();
+		//pontoDeEncontroController.zerarSistema();
 	}
 
 	public void criarUsuario(String login, String senha, String nome, String endereco, String email) throws UsuarioException{
@@ -73,7 +73,7 @@ public class SimboraEasyAccept {
 	//Metodos US04
 	
 	public String sugerirPontoEncontro(String idSessao, String idCarona, String pontos){
-		return pontoDeEncontroController.sugerirPontoEncontro(idSessao, idCarona, pontos);
+		return solicitacao.sugerirPontoEncontro(idSessao, idCarona, pontos);
 	}
 
 	public void aceitarSolicitacaoPontoEncontro(String idSessao,
@@ -81,5 +81,17 @@ public class SimboraEasyAccept {
 		solicitacao.aceitarSolicitacaoPontoEncontro(idSessao, idSolicitacao);
 	}
 	
+	public String responderSugestaoPontoEncontro(String idSessao,
+			String idCarona, String idSugestao, String pontos) {
+		return solicitacao.responderSugestaoPontoEncontro(idSessao, idCarona, idSugestao, pontos);
+	}
+	
+	public String solicitarVagaPontoEncontro(String idSessao, String idCarona, String ponto) {
+		return solicitacao.solicitarVagaPontoEncontro(idSessao, idCarona, ponto);
+	}
+	
+	public String getAtributoSolicitacao(String idSolicitacao, String atributo) {
+		return solicitacao.getAtributoSolicitacao(idSolicitacao, atributo);
+	}
 	
 }

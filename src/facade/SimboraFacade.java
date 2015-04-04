@@ -62,6 +62,20 @@ public class SimboraFacade {
 	public void aceitarSolicitacaoPontoEncontro(String idSessao, String idSolicitacao) { 
 		simboraEasyAccept.aceitarSolicitacaoPontoEncontro(idSessao, idSolicitacao);		
 	}
+	
+	public String responderSugestaoPontoEncontro(String idSessao,
+			String idCarona, String idSugestao, String pontos) {
+		return simboraEasyAccept.responderSugestaoPontoEncontro(idSessao, idCarona, idSugestao, pontos);
+	}
+	
+	public String solicitarVagaPontoEncontro(String idSessao, String idCarona, String ponto) {
+		return simboraEasyAccept.solicitarVagaPontoEncontro(idSessao, idCarona, ponto);
+	}
+	
+	public String getAtributoSolicitacao(String idSolicitacao, String atributo) {
+		return simboraEasyAccept.getAtributoSolicitacao(idSolicitacao, atributo);
+	}
+	
 
 	public static void main(String[] args) {
 		args = new String[] {"facade.SimboraFacade", "scripts/us01.txt",
