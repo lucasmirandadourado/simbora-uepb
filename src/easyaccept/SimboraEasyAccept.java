@@ -1,7 +1,6 @@
 package easyaccept;
 
 import com.controller.CaronaController; 
-import com.controller.PontoDeEncontroController;
 import com.controller.SessaoController;
 import com.controller.SolicitacaoVagaController;
 import com.controller.UsuarioController;

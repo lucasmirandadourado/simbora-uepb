@@ -1,10 +1,13 @@
 package com.model;
-
+/**
+ * 
+ * @author Lucas Miranda e Bruno Clementino
+ *
+ */
 public class PontoDeEncontro {
 	
 	private String idCarona;
 	private String pontos;
-	
 	
 	public String getIdCarona() {
 		return idCarona;
@@ -18,7 +21,4 @@ public class PontoDeEncontro {
 	public void setPontos(String pontos) {
 		this.pontos = pontos;
 	}
-	
-	
-
 }

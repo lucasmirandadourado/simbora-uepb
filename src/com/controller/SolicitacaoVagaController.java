@@ -21,6 +21,7 @@ public class SolicitacaoVagaController {
 	}
 	
 	public String sugerirPontoEncontro(String idSessao, String idCarona, String pontos) {
+		
 		return "";
 	}
 	
