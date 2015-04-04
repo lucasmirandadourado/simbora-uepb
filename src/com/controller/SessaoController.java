@@ -43,8 +43,8 @@ public class SessaoController {
 	public void encerrarSessao(String login) {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getLogin().equals(login)) {
-//				sessoes.remove(usuario);  // Não deveria retirar o usuário da sessao?
-				usuarios.remove(usuario); // Remover o usuário seria tirar ele do cadastro não seria???
+				sessoes.remove(usuario);  // Não deveria retirar o usuário da sessao?
+				//usuarios.remove(usuario); // Remover o usuário seria tirar ele do cadastro não seria???
 				break;
 			}
 		}
