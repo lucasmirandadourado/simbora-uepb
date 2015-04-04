@@ -1,7 +1,6 @@
 package easyaccept;
 
-import com.controller.CaronaController;
-import com.controller.LocalizaCaronaController;
+import com.controller.CaronaController; 
 import com.controller.PontoDeEncontroController;
 import com.controller.SessaoController;
 import com.controller.UsuarioController;
@@ -17,7 +16,6 @@ public class SimboraEasyAccept {
 
 	UsuarioController usuarioController = new UsuarioController();
 	CaronaController caronaController = new CaronaController();
-	LocalizaCaronaController localizarCarona = new LocalizaCaronaController();
 	SessaoController sessaoController = new SessaoController();
 	PontoDeEncontroController pontoDeEncontroController = new PontoDeEncontroController();
 	

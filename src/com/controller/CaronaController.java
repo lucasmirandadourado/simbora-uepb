@@ -9,14 +9,18 @@ import java.util.List;
 import com.excessoes.CaronaException;
 import com.model.Carona;
 import com.model.Sessao;
-
+/**
+ * 
+ * @author Lucas Miranda e Bruno Clementino
+ *
+ */
 public class CaronaController {
 
 	List<Carona> caronas = new ArrayList<>();
 	Carona carona;
 	List<Sessao> sessao = SessaoController.getSessoes();
-	
-	public void zerarSistema(){
+
+	public void zerarSistema() {
 		caronas.clear();
 	}
 
@@ -39,7 +43,7 @@ public class CaronaController {
 			return origemDestinoCarona(origem, destino);
 		}
 
-		if (origem.isEmpty() && destino.isEmpty()) { 
+		if (origem.isEmpty() && destino.isEmpty()) {
 			return origemDestinoCarona();
 		}
 
@@ -58,23 +62,24 @@ public class CaronaController {
 		String ids = "{";
 		boolean flag = true;// indica se a quantidade de ids é 0
 		for (Carona carona : caronas) {
-			if (carona.getLocalDeOrigem().equals(origem) && carona.getLocalDeDestino().equals(destino)) {
+			if (carona.getLocalDeOrigem().equals(origem)
+					&& carona.getLocalDeDestino().equals(destino)) {
 				if (!flag) {
 					ids += ",";
 				}
 				ids += carona.getIdCarona();
 				flag = false;
 			}
-			if (ids.equals("{0") || ids.equals("{0," )) {
+			if (ids.equals("{0") || ids.equals("{0,")) {
 				ids = "{";
-				flag=true;
+				flag = true;
 			}
 		}
-		  
+
 		return ids + "}";
 	}
 
-	private String origemDestinoCarona() { 
+	private String origemDestinoCarona() {
 		String ids = "{";
 		boolean flag = true;// indica se a quantidade de ids é 0 (Serve para
 							// auxiliar na formatação da string de retorno
@@ -121,7 +126,8 @@ public class CaronaController {
 		return ids + "}";
 	}
 
-	public String cadastrarCarona(String idSessao, String origem, String destino, String data, String hora, String qtdDeVagas)
+	public String cadastrarCarona(String idSessao, String origem,
+			String destino, String data, String hora, String qtdDeVagas)
 			throws CaronaException {
 		if (idSessao == null || idSessao.isEmpty()) {
 			throw new CaronaException("Sessão inválida");
@@ -163,11 +169,12 @@ public class CaronaController {
 		carona.setHorarioDeSaida(hora);
 		carona.setQtdDeVagas(qtdDeVagas);
 		caronas.add(carona);
-		carona.setIdCarona( (caronas.indexOf(carona))+"");
+		carona.setIdCarona((caronas.indexOf(carona)) + "");
 		return carona.getIdCarona() + "";
 
 	}
 
+	@SuppressWarnings("unused")
 	private boolean isData(String data) {
 		try {
 			SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
@@ -180,6 +187,7 @@ public class CaronaController {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private boolean isHora(String data) {
 		try {
 			SimpleDateFormat formatoData = new SimpleDateFormat("HH:mm");
@@ -191,16 +199,13 @@ public class CaronaController {
 		}
 	}
 
-	private boolean isNumero(String idSessao) {
-		try {
-			int id = Integer.parseInt(idSessao);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-
-	}
-
+	/*
+	 * private boolean isNumero(String idSessao) { try { int id =
+	 * Integer.parseInt(idSessao); return true; } catch (Exception e) { return
+	 * false; }
+	 * 
+	 * }
+	 */
 	public String getAtributoCarona(String idCarona, String atributo)
 			throws CaronaException {
 		if (idCarona == null || idCarona.equals("")) {
@@ -213,10 +218,10 @@ public class CaronaController {
 		if (atributo.equals("")) {
 			throw new CaronaException("Atributo inválido");
 		}
-		if(!idCaronaExistir(idCarona)){
+		if (!idCaronaExistir(idCarona)) {
 			throw new CaronaException("Item inexistente");
 		}
-		
+
 		if (atributo.equals("origem")) {
 			return caronas.get(Integer.valueOf(idCarona)).getLocalDeOrigem();
 		}
@@ -229,17 +234,13 @@ public class CaronaController {
 		if (atributo.equals("vagas")) {
 			return caronas.get(Integer.valueOf(idCarona)).getQtdDeVagas() + "";
 		}
-		//try {
-			//Integer.valueOf(atributo);
-	//	} catch (Exception e) {
-			throw new CaronaException("Atributo inexistente");
 
-		//return "";
+		throw new CaronaException("Atributo inexistente");
 	}
 
 	private boolean idCaronaExistir(String idCarona) {
-		for(Carona carona : caronas){
-			if((carona.getIdCarona().equals(idCarona))){
+		for (Carona carona : caronas) {
+			if ((carona.getIdCarona().equals(idCarona))) {
 				return true;
 			}
 		}
@@ -279,6 +280,25 @@ public class CaronaController {
 				+ ", as " + carona.getHorarioDeSaida();
 	}
 
+	// US04
+	/**
+	 * Quando o caroneiro aceitar, deve-se atualizar a quantidade de vagas do carro.
+	 * @param idSessao
+	 * @param idSolicitacao
+	 */
+	public void aceitarSolicitacaoPontoEncontro(String idSessao, String idSolicitacao) {
+		
+		
+	}
 	
+	public String sugerirPontoEncontro(String idSessao, String idCarona, String pontos) {
+		return "";
+	}
 	
+	public String responderSugestaoPontoEncontro(String idSessao,
+			String idCarona, String idSugestao, String pontos) {
+
+		return "";
+	}
+
 }
