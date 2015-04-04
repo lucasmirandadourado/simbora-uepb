@@ -1,6 +1,7 @@
 package facade;
 
 import com.excessoes.CaronaException;
+import com.excessoes.SessaoException;
 import com.excessoes.UsuarioException;
 
 import easyaccept.EasyAccept;
@@ -18,7 +19,7 @@ public class SimboraFacade {
 		simboraEasyAccept.criarUsuario(login, senha, nome, endereco, email);
 	}
 	
-	public String abrirSessao(String login, String senha) throws UsuarioException{
+	public String abrirSessao(String login, String senha) throws SessaoException {
 		return simboraEasyAccept.abrirSessao(login, senha);
 	}
 

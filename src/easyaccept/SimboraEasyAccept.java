@@ -3,18 +3,23 @@ package easyaccept;
 import com.controller.CaronaController;
 import com.controller.LocalizaCaronaController;
 import com.controller.PontoDeEncontroController;
+import com.controller.SessaoController;
 import com.controller.UsuarioController;
 import com.excessoes.CaronaException;
+import com.excessoes.SessaoException;
 import com.excessoes.UsuarioException;
-
+/**
+ * 
+ * @author Lucas Miranda e Bruno Clementino
+ *
+ */
 public class SimboraEasyAccept {
 
 	UsuarioController usuarioController = new UsuarioController();
 	CaronaController caronaController = new CaronaController();
 	LocalizaCaronaController localizarCarona = new LocalizaCaronaController();
-	
+	SessaoController sessaoController = new SessaoController();
 	PontoDeEncontroController pontoDeEncontroController = new PontoDeEncontroController();
-	
 	
 	public void zerarSistema() {
 		usuarioController.zerarSistema();
@@ -26,8 +31,8 @@ public class SimboraEasyAccept {
 		usuarioController.criarUsuario(login, senha, nome, endereco, email);
 	}
 	
-	public String abrirSessao(String login, String senha) throws UsuarioException{
-		return usuarioController.abrirSessao(login, senha);
+	public String abrirSessao(String login, String senha) throws SessaoException{
+		return sessaoController.abrirSessao(login, senha);
 	}
 
 	public String getAtributoUsuario(String login, String atributo) throws UsuarioException{
