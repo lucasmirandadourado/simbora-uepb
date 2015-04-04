@@ -15,7 +15,7 @@ import com.model.Usuario;
  */
 public class SessaoController {
 
-	List<Sessao> sessoes = new ArrayList<>();
+	private static List<Sessao> sessoes = new ArrayList<Sessao>();
 	/**
 	 * Foi necessario colocar <code>static</code> para não ser necessário
 	 * instanciar outra {@link List}.
@@ -25,7 +25,10 @@ public class SessaoController {
 	public String abrirSessao(String login, String senha) throws SessaoException {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
-				return usuarios.indexOf(usuario) + "";
+					Sessao ss = new Sessao();
+						ss.setIdSessao("sessao"+usuario.getLogin());
+						sessoes.add(ss);
+				return ss.getIdSessao();
 			} else if (login == null || login.isEmpty()
 					|| usuario.getLogin().equals(login)
 					|| usuario.getSenha().equals(senha)) {
@@ -36,12 +39,32 @@ public class SessaoController {
 		throw new SessaoException("Usuário inexistente");
 	}
 
-	public List<Sessao> getSessoes() {
+	
+	public void encerrarSessao(String login) {
+		for (Usuario usuario : usuarios) {
+			if (usuario.getLogin().equals(login)) {
+//				sessoes.remove(usuario);  // Não deveria retirar o usuário da sessao?
+				usuarios.remove(usuario); // Remover o usuário seria tirar ele do cadastro não seria???
+				break;
+			}
+		}
+	}
+	
+	public static boolean hasSessao(String idSessao) {
+		for (Sessao sessao : sessoes) {
+			if (sessao.getIdSessao().equals(idSessao)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static List<Sessao> getSessoes() {
 		return sessoes;
 	}
 
 	public void setSessoes(List<Sessao> sessoes) {
-		this.sessoes = sessoes;
+		SessaoController.sessoes = sessoes;
 	}
 
 	public static List<Usuario> getUsuarios() {

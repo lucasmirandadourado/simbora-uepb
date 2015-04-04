@@ -40,7 +40,7 @@ public class SimboraEasyAccept {
 	}
 	
 	public void encerrarSessao(String login){
-		usuarioController.encerrarSessao(login);
+		sessaoController.encerrarSessao(login);
 	}
 	
 	public void encerrarSistema(){

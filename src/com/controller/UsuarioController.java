@@ -138,12 +138,4 @@ public class UsuarioController {
 
 	}
 
-	public void encerrarSessao(String login) {
-		for (Usuario usuario : usuarios) {
-			if (usuario.getLogin().equals(login)) {
-				usuarios.remove(usuario);
-				break;
-			}
-		}
-	}
 }

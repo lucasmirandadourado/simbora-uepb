@@ -8,11 +8,13 @@ import java.util.List;
 
 import com.excessoes.CaronaException;
 import com.model.Carona;
+import com.model.Sessao;
 
 public class CaronaController {
 
 	List<Carona> caronas = new ArrayList<>();
 	Carona carona;
+	List<Sessao> sessao = SessaoController.getSessoes();
 	
 	public void zerarSistema(){
 		caronas.clear();
@@ -119,13 +121,12 @@ public class CaronaController {
 		return ids + "}";
 	}
 
-	public String cadastrarCarona(String idSessao, String origem,
-			String destino, String data, String hora, String qtdDeVagas)
+	public String cadastrarCarona(String idSessao, String origem, String destino, String data, String hora, String qtdDeVagas)
 			throws CaronaException {
 		if (idSessao == null || idSessao.isEmpty()) {
 			throw new CaronaException("Sessão inválida");
 		}
-		if (!isNumero(idSessao)) {
+		if (!SessaoController.hasSessao(idSessao)) {
 			throw new CaronaException("Sessão inexistente");
 		}
 		if (origem == null || origem.isEmpty()) {
