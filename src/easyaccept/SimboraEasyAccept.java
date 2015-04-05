@@ -2,11 +2,13 @@ package easyaccept;
 
 import com.controller.CaronaController; 
 import com.controller.SessaoController;
-import com.controller.SolicitacaoVagaController;
+import com.controller.SolicitacaoPontoDeEncontroController;
+import com.controller.SolicitacaoVagasController;
 import com.controller.UsuarioController;
 import com.excessoes.CaronaException;
 import com.excessoes.SessaoException;
 import com.excessoes.UsuarioException;
+import com.model.SolicitacaoVagas;
 /**
  * 
  * @author Lucas Miranda e Bruno Clementino
@@ -18,11 +20,14 @@ public class SimboraEasyAccept {
 	CaronaController caronaController = new CaronaController();
 	SessaoController sessaoController = new SessaoController();
 	//PontoDeEncontroController pontoDeEncontroController = new PontoDeEncontroController();
-	SolicitacaoVagaController solicitacao = new SolicitacaoVagaController();
+	SolicitacaoPontoDeEncontroController solicitacaoEncontroController = new SolicitacaoPontoDeEncontroController();
+	SolicitacaoVagasController solicitacaoVagasController = new SolicitacaoVagasController();
 	
 	public void zerarSistema() {
 		usuarioController.zerarSistema();
 		caronaController.zerarSistema();
+		solicitacaoEncontroController.zerarSistema();
+		solicitacaoVagasController.zerarSistema();
 		//pontoDeEncontroController.zerarSistema();
 	}
 
@@ -72,29 +77,42 @@ public class SimboraEasyAccept {
 	//Metodos US04
 	
 	public String sugerirPontoEncontro(String idSessao, String idCarona, String pontos) throws Exception{
-		return solicitacao.sugerirPontoEncontro(idSessao, idCarona, pontos);
+		return solicitacaoEncontroController.sugerirPontoEncontro(idSessao, idCarona, pontos);
 	}
 
 	public void aceitarSolicitacaoPontoEncontro(String idSessao,
 			String idSolicitacao) throws Exception {
-		solicitacao.aceitarSolicitacaoPontoEncontro(idSessao, idSolicitacao);
+		solicitacaoEncontroController.aceitarSolicitacaoPontoEncontro(idSessao, idSolicitacao);
 	}
 	
 	public String responderSugestaoPontoEncontro(String idSessao,
 			String idCarona, String idSugestao, String pontos) throws Exception {
-		return solicitacao.responderSugestaoPontoEncontro(idSessao, idCarona, idSugestao, pontos);
+		return solicitacaoEncontroController.responderSugestaoPontoEncontro(idSessao, idCarona, idSugestao, pontos);
 	}
 	
 	public String solicitarVagaPontoEncontro(String idSessao, String idCarona, String ponto) {
-		return solicitacao.solicitarVagaPontoEncontro(idSessao, idCarona, ponto);
+		return solicitacaoEncontroController.solicitarVagaPontoEncontro(idSessao, idCarona, ponto);
 	}
 	
 	public String getAtributoSolicitacao(String idSolicitacao, String atributo) throws CaronaException {
-		return solicitacao.getAtributoSolicitacao(idSolicitacao, atributo);
+		return solicitacaoEncontroController.getAtributoSolicitacao(idSolicitacao, atributo);
 	}
 	
 	public void desistirRequisicao(String idSessao, String idCarona, String idSolicitacao) throws Exception{
-		solicitacao.desistirRequisicao(idSessao, idCarona, idSolicitacao);
+		solicitacaoEncontroController.desistirRequisicao(idSessao, idCarona, idSolicitacao);
 	}
+	
+	//Metodos US05
+	public String solicitarVaga(String idSessao, String idCarona){
+		return solicitacaoVagasController.solicitarVaga(idSessao, idCarona);
+	}
+	public void aceitarSolicitacao(String idSessao, String idSolicitacao){
+		solicitacaoVagasController.aceitarSolicitacao(idSessao, idSolicitacao);
+	}
+	public void rejeitarSolicitacao(String idSessao, String idSolicitacao){
+		solicitacaoVagasController.rejeitarSolicitacao(idSessao, idSolicitacao);
+	}
+	
+	
 	
 }

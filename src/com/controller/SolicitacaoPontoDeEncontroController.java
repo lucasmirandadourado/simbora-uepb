@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.excessoes.CaronaException;
 import com.model.PontoDeEncontro;
+import com.model.SolicitacaoPontoDeEncontro;
 import com.model.SolicitacaoVagas;
 
 /**
@@ -15,7 +16,7 @@ import com.model.SolicitacaoVagas;
  * @author Lucas Miranda e Bruno Clementino
  *
  */
-public class SolicitacaoVagaController {
+public class SolicitacaoPontoDeEncontroController {
 
 	// US04
 	/**
@@ -26,10 +27,17 @@ public class SolicitacaoVagaController {
 	 * @param idSolicitacao
 	 */
 
-	private List<SolicitacaoVagas> solicitacoes = new ArrayList<>();
-	private SolicitacaoVagas solicitacaoVagas;
+	private static List<SolicitacaoPontoDeEncontro> solicitacoes = new ArrayList<>();
+	private List<SolicitacaoVagas> solicitacoesVagas = SolicitacaoVagasController.solicitacoesVagas;
+	
+	
+	private SolicitacaoPontoDeEncontro solicitacaoEncontro;
 	private PontoDeEncontro pontoDeEncontro;
 
+	public void zerarSistema(){
+		solicitacoes.clear();
+	}
+	
 	public String sugerirPontoEncontro(String idSessao, String idCarona,
 			String pontos) throws Exception {
 
@@ -41,15 +49,15 @@ public class SolicitacaoVagaController {
 		pontoDeEncontro.setPontos(pontos);
 		pontoDeEncontro.setIdSessao(idSessao);
 
-		solicitacaoVagas = new SolicitacaoVagas();
+		solicitacaoEncontro = new SolicitacaoPontoDeEncontro();
 		// 0 indica que esse ponto é o sugerido pelo caroneiro
-		solicitacaoVagas.setPontoDeEncontro(pontoDeEncontro, 0);
+		solicitacaoEncontro.setPontoDeEncontro(pontoDeEncontro, 0);
 
-		solicitacoes.add(solicitacaoVagas);
-		solicitacaoVagas.setIdSugestao(solicitacoes.indexOf(solicitacaoVagas)
+		solicitacoes.add(solicitacaoEncontro);
+		solicitacaoEncontro.setIdSugestao(solicitacoes.indexOf(solicitacaoEncontro)
 				+ "");// Para gerar o id da solicitação
 
-		return solicitacaoVagas.getIdSugestao();
+		return solicitacaoEncontro.getIdSugestao();
 	}
 
 	public String responderSugestaoPontoEncontro(String idSessao,
@@ -64,11 +72,11 @@ public class SolicitacaoVagaController {
 		pontoDeEncontro.setPontos(pontos);
 		pontoDeEncontro.setIdSessao(idSessao);
 
-		for (SolicitacaoVagas solicitacao : solicitacoes) {
-			solicitacaoVagas = solicitacao;
+		for (SolicitacaoPontoDeEncontro solicitacao : solicitacoes) {
+			solicitacaoEncontro = solicitacao;
 			if (solicitacao.getIdSugestao().equals(idSugestao)) {
 				// 1 indica que esse ponto é resposta do motorista
-				solicitacaoVagas.setPontoDeEncontro(pontoDeEncontro, 1);
+				solicitacaoEncontro.setPontoDeEncontro(pontoDeEncontro, 1);
 			}
 		}
 
@@ -84,7 +92,7 @@ public class SolicitacaoVagaController {
 		pontoDeEncontro.setIdSessao(idSessao);
 
 		PontoDeEncontro encontro;
-		for (SolicitacaoVagas solicitacao : solicitacoes) {
+		for (SolicitacaoPontoDeEncontro solicitacao : solicitacoes) {
 			encontro = solicitacao.getPontoDeEncontro(0);
 			if (encontro.getIdSessao().equals(idSessao)
 					&& encontro.getIdCarona().equals(idCarona)) {
@@ -99,7 +107,7 @@ public class SolicitacaoVagaController {
 
 	public String getAtributoSolicitacao(String idSolicitacao, String atributo)
 			throws CaronaException {
-		for (SolicitacaoVagas solicitacao : solicitacoes) {
+		for (SolicitacaoPontoDeEncontro solicitacao : solicitacoes) {
 			if (solicitacao.getIdSugestao().equals(idSolicitacao)) {
 				// return new
 				// CaronaController().getAtributoCarona(encontro.getIdCarona(),
@@ -110,7 +118,7 @@ public class SolicitacaoVagaController {
 		return "";
 	}
 
-	private String getAtributo(SolicitacaoVagas solicitacao, String atributo) {
+	private String getAtributo(SolicitacaoPontoDeEncontro solicitacao, String atributo) {
 		PontoDeEncontro encontro = solicitacao.getPontoDeEncontro(2);
 		try {
 			return new CaronaController().getAtributoCarona(
@@ -142,7 +150,7 @@ public class SolicitacaoVagaController {
 	public void aceitarSolicitacaoPontoEncontro(String idSessao,
 			String idSolicitacao) throws Exception {
 
-		for (SolicitacaoVagas solicitacao : solicitacoes) {
+		for (SolicitacaoPontoDeEncontro solicitacao : solicitacoes) {
 
 			if (solicitacao.getIdSugestao().equals(idSolicitacao)
 					&& solicitacao.isEmAndamento()) {
@@ -158,7 +166,7 @@ public class SolicitacaoVagaController {
 
 	public void desistirRequisicao(String idSessao, String idCarona,
 			String idSolicitacao) throws Exception {
-		for (SolicitacaoVagas solicitacao : solicitacoes) {
+		for (SolicitacaoPontoDeEncontro solicitacao : solicitacoes) {
 
 			if (solicitacao.getIdSugestao().equals(idSolicitacao)
 					&& !solicitacao.isEmAndamento()) {
@@ -170,5 +178,9 @@ public class SolicitacaoVagaController {
 		}
 		throw new Exception("Solicitação inexistente");
 	}
+	
+	
+	
+	
 
 }

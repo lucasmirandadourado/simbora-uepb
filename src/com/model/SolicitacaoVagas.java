@@ -1,43 +1,37 @@
 package com.model;
 
-/**
- * 
- * @author Lucas Miranda e Bruno Clementino
- *
- */
 public class SolicitacaoVagas {
-	/**
-	 * Armazena respectivamente os pontos de sugestão (0), resposta (1) e
-	 * confirmação (2).
-	 * 
-	 */
-	private PontoDeEncontro[] pontoDeEncontro = new PontoDeEncontro[3];
-
-	private String idSugestao;
-	private boolean emAndamento = true;// Se a solicitação ainda não foi
-										// concluída
-
-	public PontoDeEncontro getPontoDeEncontro(int indice) {
-		return pontoDeEncontro[indice];
+	
+	private String idSolicitacao;
+	private String idSessao;//identificação de quem solicitou a vaga
+	private String idCarona;
+	private String status = "Pendente";//Se a solicitação foi Aceita, está Pendente, ou foi Recusada.
+	
+	public String getIdSolicitacao() {
+		return idSolicitacao;
 	}
-
-	public void setPontoDeEncontro(PontoDeEncontro pontoDeEncontro, int indice) {
-		this.pontoDeEncontro[indice] = pontoDeEncontro;
+	public void setIdSolicitacao(String idSolicitacao) {
+		this.idSolicitacao = idSolicitacao;
 	}
-
-	public String getIdSugestao() {
-		return idSugestao;
+	public String getIdSessao() {
+		return idSessao;
 	}
-
-	public void setIdSugestao(String idSugestao) {
-		this.idSugestao = idSugestao;
+	public void setIdSessao(String idSessao) {
+		this.idSessao = idSessao;
 	}
-
-	public boolean isEmAndamento() {
-		return emAndamento;
+	public String getIdCarona() {
+		return idCarona;
 	}
-
-	public void setEmAndamento(boolean emAndamento) {
-		this.emAndamento = emAndamento;
+	public void setIdCarona(String idCarona) {
+		this.idCarona = idCarona;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	
+	
 }

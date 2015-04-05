@@ -80,6 +80,18 @@ public class SimboraFacade {
 		simboraEasyAccept.desistirRequisicao(idSessao, idCarona, idSolicitacao);
 	}
 	
+	public String solicitarVaga(String idSessao, String idCarona){
+		return simboraEasyAccept.solicitarVaga(idSessao, idCarona);
+	}
+	
+	public void aceitarSolicitacao(String idSessao, String idSolicitacao){
+		simboraEasyAccept.aceitarSolicitacao(idSessao, idSolicitacao);
+	}
+	
+	public void rejeitarSolicitacao(String idSessao, String idSolicitacao){
+		simboraEasyAccept.rejeitarSolicitacao(idSessao, idSolicitacao);
+	}
+	
 
 	public static void main(String[] args) {
 		args = new String[] {"facade.SimboraFacade", "scripts/us01.txt",
