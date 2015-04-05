@@ -168,6 +168,7 @@ public class CaronaController {
 		carona.setData(data);
 		carona.setHorarioDeSaida(hora);
 		carona.setQtdDeVagas(qtdDeVagas);
+		carona.setIdSessao(idSessao);
 		caronas.add(carona);
 		carona.setIdCarona((caronas.indexOf(carona)) + "");
 		return carona.getIdCarona() + "";
@@ -302,6 +303,26 @@ public class CaronaController {
 
 	public void setSessao(List<Sessao> sessao) {
 		this.sessao = sessao;
+	}
+	
+	public void reduzQtdVagas(String idcarona){
+		
+		for(Carona carona : caronas){
+			if(carona.getIdCarona().equals(idcarona)){
+				int qtdVagasAtual = Integer.parseInt(carona.getQtdDeVagas()) - 1;
+				carona.setQtdDeVagas(qtdVagasAtual+"");
+			}
+		}
+	}
+	
+	public void aumentaQtdVagas(String idcarona){
+		
+		for(Carona carona : caronas){
+			if(carona.getIdCarona().equals(idcarona)){
+				int qtdVagasAtual = Integer.parseInt(carona.getQtdDeVagas()) + 1;
+				carona.setQtdDeVagas(qtdVagasAtual+"");
+			}
+		}
 	}
 	
 }

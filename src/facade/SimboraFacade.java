@@ -55,16 +55,16 @@ public class SimboraFacade {
 		return simboraEasyAccept.getCarona(idCarona);
 	}
 	
-	public String sugerirPontoEncontro(String idSessao, String idCarona, String pontos){
+	public String sugerirPontoEncontro(String idSessao, String idCarona, String pontos) throws Exception{
 		return simboraEasyAccept.sugerirPontoEncontro(idSessao, idCarona, pontos);
 	}
 	
-	public void aceitarSolicitacaoPontoEncontro(String idSessao, String idSolicitacao) { 
+	public void aceitarSolicitacaoPontoEncontro(String idSessao, String idSolicitacao) throws Exception { 
 		simboraEasyAccept.aceitarSolicitacaoPontoEncontro(idSessao, idSolicitacao);		
 	}
 	
 	public String responderSugestaoPontoEncontro(String idSessao,
-			String idCarona, String idSugestao, String pontos) {
+			String idCarona, String idSugestao, String pontos) throws Exception {
 		return simboraEasyAccept.responderSugestaoPontoEncontro(idSessao, idCarona, idSugestao, pontos);
 	}
 	
@@ -72,8 +72,12 @@ public class SimboraFacade {
 		return simboraEasyAccept.solicitarVagaPontoEncontro(idSessao, idCarona, ponto);
 	}
 	
-	public String getAtributoSolicitacao(String idSolicitacao, String atributo) {
+	public String getAtributoSolicitacao(String idSolicitacao, String atributo) throws CaronaException {
 		return simboraEasyAccept.getAtributoSolicitacao(idSolicitacao, atributo);
+	}
+	
+	public void desistirRequisicao(String idSessao, String idCarona, String idSolicitacao) throws Exception{
+		simboraEasyAccept.desistirRequisicao(idSessao, idCarona, idSolicitacao);
 	}
 	
 

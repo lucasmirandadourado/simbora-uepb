@@ -8,6 +8,7 @@ public class PontoDeEncontro {
 	
 	private String idCarona;
 	private String pontos;
+	private String idSessao;
 	
 	public String getIdCarona() {
 		return idCarona;
@@ -21,4 +22,12 @@ public class PontoDeEncontro {
 	public void setPontos(String pontos) {
 		this.pontos = pontos;
 	}
+	public String getIdSessao() {
+		return idSessao;
+	}
+	public void setIdSessao(String idSessao) {
+		this.idSessao = idSessao;
+	}
+	
+	
 }

@@ -26,7 +26,7 @@ public class SessaoController {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
 					Sessao ss = new Sessao();
-						ss.setIdSessao("sessao"+usuario.getLogin());
+						ss.setIdSessao(usuario.getLogin());
 						ss.setIdUsuario(login);
 						sessoes.add(ss);
 				return ss.getIdSessao();

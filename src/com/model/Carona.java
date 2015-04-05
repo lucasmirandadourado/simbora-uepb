@@ -17,6 +17,7 @@ public class Carona {
 	private String qtdDeVagas;
 
 	private String idCarona;
+	private String idSessao;
 	/**
 	 * Método construtor default.
 	 */
@@ -71,4 +72,13 @@ public class Carona {
 	public void setIdCarona(String idCarona) {
 		this.idCarona = idCarona;
 	}
+
+	public String getIdSessao() {
+		return idSessao;
+	}
+
+	public void setIdSessao(String idSessao) {
+		this.idSessao = idSessao;
+	}
+	
 }

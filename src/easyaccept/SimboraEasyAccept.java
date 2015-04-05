@@ -71,17 +71,17 @@ public class SimboraEasyAccept {
 	
 	//Metodos US04
 	
-	public String sugerirPontoEncontro(String idSessao, String idCarona, String pontos){
+	public String sugerirPontoEncontro(String idSessao, String idCarona, String pontos) throws Exception{
 		return solicitacao.sugerirPontoEncontro(idSessao, idCarona, pontos);
 	}
 
 	public void aceitarSolicitacaoPontoEncontro(String idSessao,
-			String idSolicitacao) {
+			String idSolicitacao) throws Exception {
 		solicitacao.aceitarSolicitacaoPontoEncontro(idSessao, idSolicitacao);
 	}
 	
 	public String responderSugestaoPontoEncontro(String idSessao,
-			String idCarona, String idSugestao, String pontos) {
+			String idCarona, String idSugestao, String pontos) throws Exception {
 		return solicitacao.responderSugestaoPontoEncontro(idSessao, idCarona, idSugestao, pontos);
 	}
 	
@@ -89,8 +89,12 @@ public class SimboraEasyAccept {
 		return solicitacao.solicitarVagaPontoEncontro(idSessao, idCarona, ponto);
 	}
 	
-	public String getAtributoSolicitacao(String idSolicitacao, String atributo) {
+	public String getAtributoSolicitacao(String idSolicitacao, String atributo) throws CaronaException {
 		return solicitacao.getAtributoSolicitacao(idSolicitacao, atributo);
+	}
+	
+	public void desistirRequisicao(String idSessao, String idCarona, String idSolicitacao) throws Exception{
+		solicitacao.desistirRequisicao(idSessao, idCarona, idSolicitacao);
 	}
 	
 }
