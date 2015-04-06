@@ -38,6 +38,22 @@ public class CaronaTest {
 		Assert.assertEquals("{}", controller.localizarCarona(sessaoMark, "São Francisco", "Palo Alto"));
 		Assert.assertEquals("{}", controller.localizarCarona(sessaoMark, "Rio de Janeiro", "São Paulo"));
 		
+		sessaoMark = sessaoController.abrirSessao("mark", "m@rk");
+		
+		String carona1ID = controller.cadastrarCarona(sessaoMark, "Campina Grande", "João Pessoa", "23/06/2013", "16:00", "3");
+		Assert.assertEquals("Campina Grande", controller.getAtributoCarona(carona1ID, "origem"));
+		Assert.assertEquals("João Pessoa", controller.getAtributoCarona(carona1ID, "destino"));
+		Assert.assertEquals("Campina Grande - João Pessoa", controller.getTrajeto(carona1ID));
+		
+		String carona2ID = controller.cadastrarCarona(sessaoMark, "Rio de Janeiro", "São Paulo", "31/05/2013", "08:00", "2");
+		Assert.assertEquals("31/05/2013", controller.getAtributoCarona(carona2ID, "data"));
+		Assert.assertEquals("2", controller.getAtributoCarona(carona2ID, "vagas"));
+		
+		Assert.assertEquals("{}", controller.localizarCarona(sessaoMark, "São Francisco", "Palo Alto"));
+		Assert.assertEquals("{"+carona2ID+"}", controller.localizarCarona(sessaoMark, "Rio de Janeiro", "São Paulo"));
+		
+		Assert.assertEquals("{"+carona1ID+"}", controller.localizarCarona(sessaoMark, "", "João Pessoa"));	
+		
 	}
 
 }
