@@ -138,4 +138,8 @@ public class UsuarioController {
 
 	}
 
+	public int getSize() {
+		return usuarios.size();
+	}
+
 }
