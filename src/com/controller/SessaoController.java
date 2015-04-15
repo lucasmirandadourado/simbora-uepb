@@ -24,10 +24,12 @@ public class SessaoController {
 
 	/**
 	 * Ao abrir a sessão é necessário o login e senha do usuário. Esse metodo
-	 * retornará o idSessao que é o login do usuário. Caso os parametros tenham sido 
-	 * inseridos errados será gerado um erro de <b>Usuário inexistente</b>
+	 * retornará o idSessao que é o login do usuário. Caso os parametros tenham
+	 * sido inseridos errados será gerado um erro de <b>Usuário inexistente</b>
 	 *
-	 *<br>@see {@link Usuario} 
+	 * <br>
+	 * @see {@link Usuario}
+	 * 
 	 * @param login
 	 * @param senha
 	 * @return
