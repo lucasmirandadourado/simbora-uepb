@@ -200,12 +200,12 @@ public class CaronaController {
 		}
 	}
 
-	/*
-	 * private boolean isNumero(String idSessao) { try { int id =
-	 * Integer.parseInt(idSessao); return true; } catch (Exception e) { return
-	 * false; }
+	/**
 	 * 
-	 * }
+	 * @param idCarona
+	 * @param atributo
+	 * @return
+	 * @throws CaronaException
 	 */
 	public String getAtributoCarona(String idCarona, String atributo)
 			throws CaronaException {

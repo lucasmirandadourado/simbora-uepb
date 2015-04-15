@@ -1,10 +1,7 @@
 package com.teste;
 
-import static org.junit.Assert.*;
-import junit.framework.Assert;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,9 +28,10 @@ public class UsuarioTest {
 		controller.criarUsuario("steve", "5t3v3", "Steven Paul Jobs", "Palo Alto, California", "jobs@apple.com");
 		controller.criarUsuario("bill", "severino", "William Henry Gates III", "Medina, Washington", "billzin@msn.com");
 		
+		
 		controller.criarUsuario("bill", "severino", "William Henry Gates III", "Medina, Washington", "billzin@msn.com");
 		
-		Assert.assertEquals(3, controller.getSize());		
+		assertEquals(3, controller.getSize());		
 		
 	}
 	
@@ -41,18 +39,22 @@ public class UsuarioTest {
 	@Test
 	public void testGetAtributoUsuario(){
 		
-		Assert.assertEquals("Mark Zuckerberg", controller.getAtributoUsuario("mark", "nome"));
-		Assert.assertEquals("Palo Alto, California", controller.getAtributoUsuario("mark", "endereco"));
+		controller.criarUsuario("mark", "m@rk", "Mark Zuckerberg", "Palo Alto, California", "mark@facebook.com");
+		controller.criarUsuario("steve", "5t3v3", "Steven Paul Jobs", "Palo Alto, California", "jobs@apple.com");
+		controller.criarUsuario("bill", "severino", "William Henry Gates III", "Medina, Washington", "billzin@msn.com");
+		
+		assertEquals("Mark Zuckerberg", controller.getAtributoUsuario("mark", "nome"));
+		assertEquals("Palo Alto, California", controller.getAtributoUsuario("mark", "endereco"));
 				
-		Assert.assertEquals("William Henry Gates III", controller.getAtributoUsuario("bill", "nome"));
-		Assert.assertEquals("Medina, Washington", controller.getAtributoUsuario("bill", "endereco"));
+		assertEquals("William Henry Gates III", controller.getAtributoUsuario("bill", "nome"));
+		assertEquals("Medina, Washington", controller.getAtributoUsuario("bill", "endereco"));
 		
 		
 	}
-	
-	/*public void testZerarLimparDados(){
+	@Test
+	public void testZerarLimparDados(){
 		controller.zerarSistema();
-		Assert.assertEquals(0, controller.getSize());
-	}*/
+		assertEquals(0, controller.getSize());
+	}
 
 }
