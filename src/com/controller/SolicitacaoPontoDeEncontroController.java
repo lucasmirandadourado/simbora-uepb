@@ -115,7 +115,7 @@ public class SolicitacaoPontoDeEncontroController {
 				return getAtributo(solicitacao, atributo);
 			}
 		}
-		return "";
+		return new SolicitacaoVagasController().getAtributo(idSolicitacao, atributo);
 	}
 
 	private String getAtributo(SolicitacaoPontoDeEncontro solicitacao, String atributo) {

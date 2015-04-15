@@ -109,7 +109,7 @@ public class SimboraEasyAccept {
 	public void aceitarSolicitacao(String idSessao, String idSolicitacao){
 		solicitacaoVagasController.aceitarSolicitacao(idSessao, idSolicitacao);
 	}
-	public void rejeitarSolicitacao(String idSessao, String idSolicitacao){
+	public void rejeitarSolicitacao(String idSessao, String idSolicitacao) throws Exception{
 		solicitacaoVagasController.rejeitarSolicitacao(idSessao, idSolicitacao);
 	}
 	

@@ -3,6 +3,8 @@ package com.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.model.Carona;
+import com.model.PontoDeEncontro;
 import com.model.SolicitacaoPontoDeEncontro;
 import com.model.SolicitacaoVagas;
 
@@ -43,15 +45,49 @@ public class SolicitacaoVagasController {
 		
 	}
 	
-	public void rejeitarSolicitacao(String idSessao, String idSolicitacao){
+	public void rejeitarSolicitacao(String idSessao, String idSolicitacao) throws Exception{
 		for(SolicitacaoVagas solicitacao : solicitacoesVagas){
 			
 			if(solicitacao.getIdSolicitacao().equals(idSolicitacao)){
-				solicitacao.setStatus("Recusada");
-				return;
+				if(solicitacao.getStatus().equals("Pendente")){
+
+					solicitacao.setStatus("Recusada");
+					return;
+				}else{
+					throw new Exception("Solicitação inexistente");
+				}
+				
+				
 			}
 			
 		}
+		
+	}
+	
+	public String getAtributo(String idSolicitacao, String atributo) {
+		for(SolicitacaoVagas solicitacao : solicitacoesVagas){
+			if(solicitacao.getIdSolicitacao().equals(idSolicitacao)){
+				try {
+					return new CaronaController().getAtributoCarona(solicitacao.getIdCarona(), atributo);
+				} catch (Exception e) {
+				}	
+				if (atributo.equals("Dono da carona")) {
+					for(Carona carona: CaronaController.getCaronas()){
+						if(carona.getIdCarona().equals(solicitacao.getIdCarona())){
+							return new UsuarioController().getAtributoUsuario(carona.getIdSessao(), "nome");
+						}
+					}
+						
+				}
+
+				if (atributo.equals("Dono da solicitacao")) {
+					return new UsuarioController().getAtributoUsuario(
+							solicitacao.getIdSessao(), "nome");
+				}
+			}
+		}
+
+		return "";
 	}
 	
 }

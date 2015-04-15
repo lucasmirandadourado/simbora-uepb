@@ -88,7 +88,7 @@ public class SimboraFacade {
 		simboraEasyAccept.aceitarSolicitacao(idSessao, idSolicitacao);
 	}
 	
-	public void rejeitarSolicitacao(String idSessao, String idSolicitacao){
+	public void rejeitarSolicitacao(String idSessao, String idSolicitacao) throws Exception{
 		simboraEasyAccept.rejeitarSolicitacao(idSessao, idSolicitacao);
 	}
 	
