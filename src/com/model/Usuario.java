@@ -1,4 +1,11 @@
 package com.model;
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 /**
  * Usuário básico. Ele tem como funções: 
@@ -12,8 +19,13 @@ package com.model;
  *
  */
 
-public class Usuario {
+@Entity
+@Table(name="USUARIO")
+public class Usuario implements Serializable{
 
+	@Id
+	@GeneratedValue
+	private long id;
 	private String login;
 	private String senha;
 	private String nome;
