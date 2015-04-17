@@ -325,4 +325,14 @@ public class CaronaController {
 		}
 	}
 	
+	public static boolean ehMotorista(String login, String idCarona){
+		for(Carona carona : caronas){
+			if(idCarona.equals(carona.getIdCarona() )&& login.equals(carona.getIdSessao())){
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 }

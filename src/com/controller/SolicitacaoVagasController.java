@@ -90,4 +90,9 @@ public class SolicitacaoVagasController {
 		return "";
 	}
 	
+	public static boolean ehCaroneiro(String login){
+		
+		return false;
+	}
+	
 }

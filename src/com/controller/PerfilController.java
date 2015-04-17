@@ -1,11 +1,19 @@
 package com.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.excessoes.PerfilException;
 import com.model.Carona;
 import com.model.SolicitacaoVagas;
 import com.model.Usuario;
 
 public class PerfilController {
+	
+	public static List<String> caronasSegurasTranquilas = new ArrayList<>();
+	public static List<String> caronasNaoFuncionaram = new ArrayList<>();
+	public static List<String> faltaramNasVagas = new ArrayList<>();
+	public static List<String> presenteNasVagas = new ArrayList<>();
 	
 	public String visualizarPerfil(String idSessao, String login) throws PerfilException{
 		
@@ -63,6 +71,46 @@ public class PerfilController {
 				}
 			}
 			return caron+"]";
+		}
+		
+		if(atributo.equals("caronas seguras e tranquilas")){
+			int caron = 0;
+			for(String idCarona : caronasSegurasTranquilas){
+				if(CaronaController.ehMotorista(login, idCarona)){
+					caron++;
+				}
+			}
+			return caron+"";
+		}
+		
+		if(atributo.equals("caronas que não funcionaram")){
+			int caron = 0;
+			for(String idCarona : caronasNaoFuncionaram){
+				if(CaronaController.ehMotorista(login, idCarona)){
+					caron++;
+				}
+			}
+			return caron+"";
+		}
+		
+		if(atributo.equals("faltas em vagas de caronas")){
+			int caron = 0;
+			for(String idUsuario : faltaramNasVagas){
+				if(idUsuario.equals(login) && SolicitacaoVagasController.ehCaroneiro(login)){
+					caron++;
+				}
+			}
+			return caron+"";
+		}
+		
+		if(atributo.equals("presenças em vagas de caronas")){
+			int caron = 0;
+			for(String idUsuario : presenteNasVagas){
+				if(idUsuario.equals(login) && SolicitacaoVagasController.ehCaroneiro(login)){
+					caron++;
+				}
+			}
+			return caron+"";
 		}
 		
 		return new UsuarioController().getAtributoUsuario(login, atributo);
