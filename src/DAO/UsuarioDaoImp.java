@@ -20,9 +20,9 @@ public class UsuarioDaoImp implements UsuarioDao{
 	}
 
 	@Override
-	public Usuario getUsuario(long id) {
+	public Usuario getUsuario(String login) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		return (Usuario) session.load(Usuario.class, id);
+		return (Usuario) session.load(Usuario.class, login);
 	}
 
 	@Override
@@ -49,4 +49,5 @@ public class UsuarioDaoImp implements UsuarioDao{
 		session.update(usuario);
 		t.commit();
 	}
+	
 }

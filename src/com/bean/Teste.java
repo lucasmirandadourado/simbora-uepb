@@ -14,6 +14,10 @@ public class Teste {
 		usuario.setNome("Bruno");
 		usuario.setSenha("1234");
 		new UsuarioDaoImp().save(usuario);
+		
+		usuario = new UsuarioDaoImp().getUsuario("bruno");
+		System.out.println(usuario.getNome());
+		System.out.println("Fim");
 	}
 	
 }

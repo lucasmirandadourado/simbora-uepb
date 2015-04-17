@@ -1,6 +1,7 @@
 package com.model;
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,8 +25,7 @@ import javax.persistence.Table;
 public class Usuario implements Serializable{
 
 	@Id
-	@GeneratedValue
-	private long id;
+	@Column(name = "login")
 	private String login;
 	private String senha;
 	private String nome;
