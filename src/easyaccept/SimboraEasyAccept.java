@@ -1,11 +1,13 @@
 package easyaccept;
 
 import com.controller.CaronaController; 
+import com.controller.PerfilController;
 import com.controller.SessaoController;
 import com.controller.SolicitacaoPontoDeEncontroController;
 import com.controller.SolicitacaoVagasController;
 import com.controller.UsuarioController;
 import com.excessoes.CaronaException;
+import com.excessoes.PerfilException;
 import com.excessoes.SessaoException;
 import com.excessoes.UsuarioException;
 import com.model.SolicitacaoVagas;
@@ -22,6 +24,7 @@ public class SimboraEasyAccept {
 	//PontoDeEncontroController pontoDeEncontroController = new PontoDeEncontroController();
 	SolicitacaoPontoDeEncontroController solicitacaoEncontroController = new SolicitacaoPontoDeEncontroController();
 	SolicitacaoVagasController solicitacaoVagasController = new SolicitacaoVagasController();
+	PerfilController perfilController = new PerfilController();
 	
 	public void zerarSistema() {
 		usuarioController.zerarSistema();
@@ -113,6 +116,12 @@ public class SimboraEasyAccept {
 		solicitacaoVagasController.rejeitarSolicitacao(idSessao, idSolicitacao);
 	}
 	
+	public String visualizarPerfil(String idSessao, String login) throws PerfilException{
+		return perfilController.visualizarPerfil(idSessao, login);
+	}
 	
+	public String getAtributoPerfil(String login, String atributo) throws PerfilException{
+		return perfilController.getAtributoPerfil(login, atributo);
+	}
 	
 }

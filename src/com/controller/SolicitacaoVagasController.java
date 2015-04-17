@@ -11,7 +11,7 @@ import com.model.SolicitacaoVagas;
 public class SolicitacaoVagasController {
 
 	SolicitacaoVagas solicitacaoVagas;
-	static List<SolicitacaoVagas> solicitacoesVagas = new ArrayList<>();
+	public static List<SolicitacaoVagas> solicitacoesVagas = new ArrayList<>();
 	
 	public void zerarSistema(){
 		solicitacoesVagas.clear();

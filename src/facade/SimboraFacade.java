@@ -1,6 +1,7 @@
 package facade;
 
 import com.excessoes.CaronaException;
+import com.excessoes.PerfilException;
 import com.excessoes.SessaoException;
 import com.excessoes.UsuarioException;
 
@@ -92,10 +93,19 @@ public class SimboraFacade {
 		simboraEasyAccept.rejeitarSolicitacao(idSessao, idSolicitacao);
 	}
 	
+	public String visualizarPerfil(String idSessao, String login) throws PerfilException{
+		return simboraEasyAccept.visualizarPerfil(idSessao, login);
+	}
+	
+	public String getAtributoPerfil(String login, String atributo) throws PerfilException{
+		return simboraEasyAccept.getAtributoPerfil(login, atributo);
+	}
+	
 
 	public static void main(String[] args) {
-		args = new String[] {"facade.SimboraFacade", "scripts/us01.txt",
-				"scripts/us02.txt", "scripts/us03.txt", "scripts/us04.txt", "scripts/us05.txt"};
+		args = new String[] {"facade.SimboraFacade", /*"scripts/us01.txt",
+				"scripts/us02.txt", "scripts/us03.txt", "scripts/us04.txt", "scripts/us05.txt"
+				, */"scripts/us06.txt"};
 		EasyAccept.main(args); 
 	}
 }
