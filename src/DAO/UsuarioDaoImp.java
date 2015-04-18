@@ -29,7 +29,7 @@ public class UsuarioDaoImp implements UsuarioDao{
 	public List<Usuario> list() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		List lista = session.createQuery("from USUARIO").list();
+		List<Usuario> lista = session.createQuery("from Usuario").list();
 		t.commit();
 		return lista;
 	}
@@ -49,5 +49,12 @@ public class UsuarioDaoImp implements UsuarioDao{
 		session.update(usuario);
 		t.commit();
 	}
+	
+	public void excluirTudo() {  
+        List<Usuario> list = list();
+        for(Usuario usuario:list){
+        	remove(usuario);
+        }
+    } 
 	
 }
