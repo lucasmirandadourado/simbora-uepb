@@ -147,7 +147,7 @@ public class SolicitacaoPontoDeEncontroController {
 		return "";
 	}
 
-	public void aceitarSolicitacaoPontoEncontro(String idSessao,
+	public void aceitarSolicitacaoPontoEncontro(String idSessao, 
 			String idSolicitacao) throws Exception {
 
 		for (SolicitacaoPontoDeEncontro solicitacao : solicitacoes) {
@@ -161,7 +161,6 @@ public class SolicitacaoPontoDeEncontroController {
 			}
 		}
 		throw new Exception("Solicitação inexistente");
-
 	}
 
 	public void desistirRequisicao(String idSessao, String idCarona,

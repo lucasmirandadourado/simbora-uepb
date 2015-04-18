@@ -8,14 +8,14 @@ public class Teste {
 
 	public static void main(String[] args) {
 		Usuario usuario = new Usuario();
-		usuario.setEmail("Teste");
-		usuario.setEndereco("teste");
-		usuario.setLogin("bruno");
-		usuario.setNome("Bruno");
-		usuario.setSenha("1234");
+		usuario.setEmail("lucasmirandadourado@gmail.com");
+		usuario.setEndereco("Rua");
+		usuario.setLogin("lucas");
+		usuario.setNome("Lucas");
+		usuario.setSenha("4321");
 		new UsuarioDaoImp().save(usuario);
 		
-		usuario = new UsuarioDaoImp().getUsuario("bruno");
+		usuario = new UsuarioDaoImp().getUsuario("lucas");
 		System.out.println(usuario.getNome());
 		System.out.println("Fim");
 	}
