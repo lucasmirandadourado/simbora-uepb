@@ -10,7 +10,7 @@ import com.controller.UsuarioController;
 import com.excessoes.SessaoException;
 import com.excessoes.UsuarioException;
 
-public class UsuarioSingletonTest {
+public class UsuarioTest {
 
 	UsuarioController usuario;
 

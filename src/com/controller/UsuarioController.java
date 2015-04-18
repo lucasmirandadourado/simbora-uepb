@@ -2,8 +2,6 @@ package com.controller;
 
 import java.util.List;
 
-import org.hibernate.type.TrueFalseType;
-
 import com.excessoes.UsuarioException;
 import com.model.Usuario;
 
