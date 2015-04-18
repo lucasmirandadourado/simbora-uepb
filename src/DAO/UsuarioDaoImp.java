@@ -17,6 +17,7 @@ public class UsuarioDaoImp implements UsuarioDao{
 		Transaction t = session.beginTransaction();
 		session.save(usuario);
 		t.commit();
+		session.close();
 	}
 
 	@Override

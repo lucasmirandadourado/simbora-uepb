@@ -9,7 +9,7 @@ public class UsuarioController {
 
 	Usuario usuario;
 	String mensagemErro = "";
-	
+
 	/**
 	 * Aqui acredito que foi uma paradigma de programação bem conhecida para
 	 * poder solucionar esse problema. POG (Programação Orientada a Gambiarra).
@@ -24,22 +24,39 @@ public class UsuarioController {
 		usuarios.clear();
 	}
 
+	/**
+	 * Para criar o usuario, ele faz uma verificação se o usuário é valido ou não 
+	 * @param login
+	 * @param senha
+	 * @param nome
+	 * @param endereco
+	 * @param email
+	 * @throws UsuarioException
+	 */
 	public void criarUsuario(String login, String senha, String nome,
 			String endereco, String email) throws UsuarioException {
 		usuario = new Usuario();
+
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
 		usuario.setNome(nome);
 		usuario.setEndereco(endereco);
 		usuario.setEmail(email);
+
 		if (ehUsuarioValido(usuario) && ehUsuarioNovo(usuario)) {
 			usuarios.add(usuario);
 		} else {
 			throw new UsuarioException(mensagemErro);
 		}
-
 	}
 
+	/**
+	 * Percorre a lista de {@link Usuario} e verifica se já existe um Login ou
+	 * email iguais. Caso não tenha returna um <code>true</code>.
+	 * 
+	 * @param user
+	 * @return {@link Boolean}
+	 */
 	private boolean ehUsuarioNovo(Usuario user) {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getLogin().equals(user.getLogin())) {
@@ -54,6 +71,12 @@ public class UsuarioController {
 		return true;
 	}
 
+	/**
+	 * Verifica se o login, nome e e-mail estão <code>null</code> ou vázios.
+	 * 
+	 * @param usuario
+	 * @return
+	 */
 	private boolean ehUsuarioValido(Usuario usuario) {
 		if (usuario.getLogin() == null || usuario.getLogin().isEmpty()) {
 			mensagemErro = "Login inválido";
@@ -128,11 +151,11 @@ public class UsuarioController {
 
 	/*
 	 * public String abrirSessao(String login, String senha) throws
-	 * 	UsuarioException{ //mensagemErro = "Usuário inexistente"; for(Usuario
-	 * 	usuario : usuarios){ if( usuario.getLogin().equals(login) &&
-	 * 	usuario.getSenha().equals(senha)){ return usuarios.indexOf(usuario)+""; }
-	 * 	else if(login==null || login.isEmpty() ||
-	 * 	usuario.getLogin().equals(login) || usuario.getSenha().equals(senha)){
+	 * UsuarioException{ //mensagemErro = "Usuário inexistente"; for(Usuario
+	 * usuario : usuarios){ if( usuario.getLogin().equals(login) &&
+	 * usuario.getSenha().equals(senha)){ return usuarios.indexOf(usuario)+""; }
+	 * else if(login==null || login.isEmpty() ||
+	 * usuario.getLogin().equals(login) || usuario.getSenha().equals(senha)){
 	 * //mensagemErro = "Login inválido"; throw new
 	 * UsuarioException("Login inválido"); } }
 	 * 

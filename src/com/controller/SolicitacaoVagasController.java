@@ -39,10 +39,8 @@ public class SolicitacaoVagasController {
 				solicitacao.setStatus("Aceita");
 				new CaronaController().reduzQtdVagas(solicitacao.getIdCarona());
 				return;
-			}
-			
-		}
-		
+			}			
+		}		
 	}
 	
 	public void rejeitarSolicitacao(String idSessao, String idSolicitacao) throws Exception{
